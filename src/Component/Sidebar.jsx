@@ -77,8 +77,8 @@ function Sidebar(props) {
     
     
     return (
-        <div className='  flex flex-col  h-full bg-secondary-dark-bg '>
-            <div className='pt-11 pl-8 w-full'>
+        <div className='   flex flex-col  h-full bg-secondary-dark-bg  -ml-1 w-1/6  fixed mt-2 top-16  '>
+            <div className='pt-12 pl-8 w-full'>
                 <span className='text-title font-normal font-[Inter]  bg-primary '>MENU</span>
             </div>
         

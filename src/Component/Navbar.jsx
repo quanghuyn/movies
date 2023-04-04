@@ -26,7 +26,7 @@ const activeLink = ' border-active flex items-center font-medium text-l border-b
 
 function Navbar(props) {
     return (
-        <div className=' bg-main-dark-bg  flex pt flex-row content-cente  h-72  text-fontactive w-full ' >
+        <div className=' bg-main-dark-bg  flex pt flex-row content-cente  h-72  text-fontactive fixed w-screen top-0  z-50 ' >
           
             <NavLink to={'/'} className =' flex font-bold text-2xl items-center ml-14 w-3/12'> Cinemax </NavLink>
 
@@ -45,7 +45,7 @@ function Navbar(props) {
                     )
                 })}
             </div>
-            <div className=' flex items-center pt-2 ml-20 w-2/12 '>
+            <div className=' flex items-center pt-2 ml-16  w-2/12 '>
                 <input type="text" placeholder='Search' className='  pl-3 pb-1 placeholder:text-fontnormal  focus:outline-none text-opacity-60 bg-main-dark-bg h-7 rounded-full w-30  border border-fontnormal' />
                 <span>
                 <svg className='ml-3' width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -57,7 +57,7 @@ function Navbar(props) {
                 <button  className='bg-link rounded-full text-xl  pt-2 pb-2  pl-5 pr-5 ml-16 font-semibold' >Subscribe</button>
             </div>
 
-            <div className='flex items-center ml-16  w-2/12'>
+            <div className='flex items-center ml-12  w-2/12'>
                 <span className='mr-16 relative '>
                 <div
                      className="flex bg-fontnormal h-2 w-4 absolute top-0 right-0 bottom-auto left-auto z-10 translate-x-2/4 -translate-y-1/2 rotate-0 skew-x-0 skew-y-0 scale-x-100 scale-y-100 rounded-full  p-2.5 text-xs">

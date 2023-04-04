@@ -1,5 +1,5 @@
-export {default as ComingSoon} from './ComingSoon.jsx'
-export {default as RecentPlayed} from './RecentPlayed.jsx'
-export {default as TopRated} from './TopRated.jsx'
-export {default as Home} from './Home.jsx'
+export {default as ComingSoon} from './ManiPage/ComingSoon'
+export {default as RecentPlayed} from './ManiPage/RecentPlayed.jsx'
+export {default as TopRated} from './ManiPage/TopRated.jsx'
+export {default as Home} from './ManiPage/Home.jsx'
 

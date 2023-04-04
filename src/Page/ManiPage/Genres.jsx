@@ -1,11 +1,11 @@
 import React from 'react';
 
-function TopRated(props) {
+function Genres(props) {
     return (
         <div>
-            TopRated
+            
         </div>
     );
 }
 
-export default TopRated;TopRated
+export default Genres;

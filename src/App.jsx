@@ -1,31 +1,21 @@
-import { useState,useEffect } from 'react'
+
 import React from 'react';
-// import {Routes,Route,BrowserRouter}  from 'react-router-dom'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Popup from 'reactjs-popup'
 import './App.css'
 import{Sidebar,Navbar} from './Component'
-import{Banner,Studio,ContentSideBar,CountinueWatch}  from  './Component/Discovery'
-import {ComingSoon,RecentPlayed,TopRated,Home} from './Page'
-
-// API Key: dc53e961c475e293222eece8d1187ddb
+import {ComingSoon,RecentPlayed,TopRated,Home} from './Page' 
 
 function App(props) {
   return (
-    <div className='  bg-main-dark-bg  min-h-screen h-[1500px]' >
-        <BrowserRouter>
-            <div className=' relative'>
+    <BrowserRouter>
                
-                <div className='fixed  top-0  z-50 '>
                   <Navbar></Navbar>
-                </div>
-
-                <div className=' w-screen  '>
-                  <div className=' -ml-1 w-1/5 fixed  h-full top-20'>
+                  <div className=' relative'>
                     <Sidebar></Sidebar>
-                  </div>  
-                  {/*  */}
-                  <div className=' overflow-x-clip absolute lg:left-60 md:left-40  top-20  w-4/5 ml-8 ' >
+                  // Mani layout
+                  {/* <div className='ml-1 pl-1 top-16 absolute lg:left-60 md:left-40 pt-4 w-5/6 bg-main-dark-bg ' > */}
+                  {/* <div className=' absolute ml-20 pl-4 top-16  md:left-40 pt-4 w-5/6  bg-main-dark-bg ' > */}
+                  <div className=' absolute right-0  w-5/6 ' >
                       <Routes>
                         <Route  path='/' element={<Home/>} ></Route>
                         <Route  path='/toprated' element={<TopRated/>} ></Route>
@@ -33,10 +23,8 @@ function App(props) {
                         <Route  path='/recent' element={<RecentPlayed/>}></Route>
                       </Routes>
                   </div> 
-                </div>
-            </div>
+                  </div>
         </BrowserRouter>
-    </div>
   );
 }
 

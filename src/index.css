@@ -22,6 +22,7 @@ body {
     }
     .movies-list .swiper-slide{
       width: 340px;
+      height: auto;
     }
     .movies-list .swiper-studio{
       width: 50px;
