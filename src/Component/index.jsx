@@ -9,6 +9,7 @@ export {default as ContentSideBar} from './Dashboard/Content.jsx'
 export {default as CountinueWatch} from './Dashboard/CountinueWatch.jsx'
 export {default as MoviesCard} from './Dashboard/MoviesCard.jsx'
 export {default as MoviesCardSideBar} from './Dashboard/MoviesCardSideBar.jsx'
+export {default as MoviesCardHome} from './Dashboard/MoviesCardHome.jsx'
 
 
 // export load 

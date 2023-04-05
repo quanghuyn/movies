@@ -6,6 +6,7 @@ import useSWR from "swr";
 import Swiper from "swiper";
 import { SwiperSlide } from "swiper/react";
 import Spinner from "../Load/Spinner";
+import { Link } from "react-router-dom";
 
 function ContentSideBar(props) {
   const { data, error, isLoading, isValidating } = useSWR(
@@ -23,7 +24,7 @@ function ContentSideBar(props) {
 
   return (
     <div className="w-full">
-      <div className="font-semibold text-xl mb-4 pt-5 pl-3">Top Movies</div>
+      <div className="font-semibold text-xl mb-4 pt-14 pl-3">Top Movies</div>
       <div>
         {isLoading ? (
           <Spinner></Spinner>
@@ -42,10 +43,10 @@ function ContentSideBar(props) {
           })
         )}
 
-        <button className=" ml-8 w-72 border rounded-full h-10 border-link text-link text-lg">
+        <Link to={'/toprated'} className=" ml-8 px-32 border rounded-full py-2 border-link text-link text-lg">
           {" "}
           See All
-        </button>
+        </Link>
       </div>
       <div>
         <Genres></Genres>

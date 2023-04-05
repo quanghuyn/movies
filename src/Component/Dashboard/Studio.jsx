@@ -67,7 +67,7 @@ const dataStudio = [
 
 function Studio(props) {
     return (
-        <div className=' pl-2 h-full w-full  ' >
+        <div className=' pl-6 h-full w-full  ' >
             <Swiper grabCursor ={"true"}  spaceBetween={20} slidesPerView={"auto"}>
                 {dataStudio.map((item,index)=> { return (
                     <SwiperSlide className='w-44 '
