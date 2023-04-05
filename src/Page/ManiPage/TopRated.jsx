@@ -25,7 +25,7 @@ function TopRated(props) {
  
   return (
     <div className="bg-main-dark-bg -ml-1 min-h-screen " >
-       <div className=" pt-14 pl-16 grid grid-cols-3 gap-10     ">
+       <div className=" pt-14 pl-8 grid grid-cols-3 gap-8 pr-8    ">
         {isLoading ? (
           <Spinner></Spinner>
         ) : (
@@ -43,11 +43,11 @@ function TopRated(props) {
           })
         )}
       </div>
-      <div className="text-link ml-20 mt-14 pb-14 flex flex-row gap-8 content-center justify-center ">
+      <div className="text-link ml-20 mt-14 pb-12 flex flex-row gap-8 content-center justify-center ">
           {Page.map((i,index) => { return(
               
               <span key={index} onClick={(e) => handlPage(e)} 
-                className="cursor-pointer bg-title bg-opacity-5  text-xl px-2 py-0.5 rounded-sm" >
+                className=" transition hover:duration-700 ease-in-out  hover:scale-110 cursor-pointer bg-title bg-opacity-5  text-xl px-2 py-0.5 rounded-sm" >
                 {index +1}</span>
               
           )})} 

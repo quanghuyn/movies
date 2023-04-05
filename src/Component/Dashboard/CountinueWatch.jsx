@@ -21,8 +21,8 @@ function CountinueWatch(props) {
 
   console.log(data);
   return (
-    <div className="movies-list ">
-      <div className='pt-4 pl-2 pb-'>
+    <div className="movies-list bg-main-dark-bg  ">
+      <div className='pt-2 pb-4 pl-2 '>
           <span className="text-2xl text-fontactive   " >Trending movies</span>
       </div>
       <Swiper grabCursor={"true"} spaceBetween={20} slidesPerView={"auto"}>
