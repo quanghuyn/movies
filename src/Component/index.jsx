@@ -14,3 +14,8 @@ export {default as MoviesCardHome} from './Dashboard/MoviesCardHome.jsx'
 
 // export load 
 export {default as Spinner } from './Load/Spinner.jsx'
+
+//export detail
+
+export {default as BannerDetail} from './DetailsFilm/BannerDetail.jsx'
+export {default as CardDetail} from './DetailsFilm/CardDetail.jsx'

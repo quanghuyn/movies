@@ -4,7 +4,7 @@ import{Banner,Studio,ContentSideBar,CountinueWatch}  from  '../../Component'
 function Home(props) {
     return (
         // bg-main-dark-bg h-[1000px] w-1600
-        <div className=' ' >
+        <div className='  absolute right-0  w-5/6' >
         <div className='   flex  bg-main-dark-bg  -ml-1 pl-6  pb-20 h-[1180px]' >
             <div className=' flex flex-row w-full'>
 
