@@ -16,7 +16,7 @@ function ContentSideBar(props) {
   const [dataMovies, setDataMovies] = useState();
   useEffect(() => {
     const dataM = [];
-    for (let index = 0; index < 3; index++) {
+    for (let index = 0; index < 4; index++) {
       isLoading ? null : dataM.push(data?.results[index]);
     }
     setDataMovies(() => dataM);
@@ -24,8 +24,8 @@ function ContentSideBar(props) {
 
   return (
     <div className="w-full">
-      <div className="font-semibold text-xl mb-4 pt-14 pl-3">Top Movies</div>
-      <div>
+      <div className="font-medium  text-2xl mb-6 pt-20 pl-3">Top Movies</div>
+      <div className="mb-2" >
         {isLoading ? (
           <Spinner></Spinner>
         ) : (
@@ -42,12 +42,12 @@ function ContentSideBar(props) {
             );
           })
         )}
+      </div>
 
-        <Link to={'/toprated'} className=" ml-8 px-32 border rounded-full py-2 border-link text-link text-lg">
+        <Link to={'/toprated'} className="  ml-8 px-32 border rounded-full py-2 border-link text-link text-lg  ">
           {" "}
           See All
         </Link>
-      </div>
       <div>
         <Genres></Genres>
       </div>

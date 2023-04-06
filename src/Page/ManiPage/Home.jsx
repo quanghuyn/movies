@@ -5,7 +5,7 @@ function Home(props) {
     return (
         // bg-main-dark-bg h-[1000px] w-1600
         <div className=' ' >
-        <div className='   flex  bg-main-dark-bg  -ml-1 pl-6  pb-20 ' >
+        <div className='   flex  bg-main-dark-bg  -ml-1 pl-6  pb-20 h-[1180px]' >
             <div className=' flex flex-row w-full'>
 
                 <div className=' w-2/3 '>
@@ -22,7 +22,7 @@ function Home(props) {
                     </div>
                 </div>
 
-                <div className=' pl-2 w-1/3 border-active text-fontactive '>
+                <div className=' pl-3 w-1/3 border-active text-fontactive '>
                         <ContentSideBar>
                             content
                         </ContentSideBar>

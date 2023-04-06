@@ -30,9 +30,9 @@ function MoviesCard(props) {
         //     </div>
         // </div>
         <div className='flex flex-col rounded-lg bg-movies text-fontactive h-[460px] sele '>
-        <div className=' w-[320px] h-[300px] absolute z-10 bg-gradient-to-r  from-cardmovies  to-cardmoviesto  '></div>
+        <div className=' w-[320px] h-[350px] absolute z-10 bg-gradient-to-r  from-cardmovies  to-cardmoviesto  '></div>
         <img src={`https://image.tmdb.org/t/p/w500${props.bg}`} alt=""
-        className='w-full h-[300px] object-cover rounded-t-lg mb-5' />
+        className='w-full h-[330px] object-center rounded-t-lg mb-5' />
 
         <div className='flex flex-col flex-1 pl-4'>
 

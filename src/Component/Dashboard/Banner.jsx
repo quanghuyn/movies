@@ -3,7 +3,7 @@ import {BsFillPlayFill,BsHeartFill,BsHeart} from "react-icons/bs"
 
 function Banner(props) {
     return (
-        <div className=' text-fontactive bg-main-dark-bg h-full'>
+        <div className=' text-fontactive bg-main-dark-bg h-full pt-16'>
             <div className=' mt-6 mb-7'>
                 <div className='relative  w-full h-[400px] flex flex-col' >
                     <div className='flex mx-auto w-full h-full '>
