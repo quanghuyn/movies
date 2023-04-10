@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import useSWR from "swr";
 import { fetcher } from "../../config";
 import {Spinner,MoviesCard} from "../../Component";
-
+import scrollTo from 'gatsby-plugin-smoothscroll'
 
 function TopRated(props) {
   const Page = new Array(10).fill(null)
@@ -21,9 +21,11 @@ function TopRated(props) {
     } 
  
   return (
-    <div className="absolute right-0  w-5/6">
+    <div className="absolute lg:right-0 mt-10 lg:w-5/6 view ">
         <div className="bg-main-dark-bg -ml-1 min-h-screen   " >
-          <div className=" pt-14 pl-8 grid grid-cols-3 gap-8 pr-8    ">
+
+        {/* <h3 className="text-fontactive mt-8 top-10 " >Top Rated</h3> */}
+          <div className=" max-sm:grid-cols-2  pt-14 pl-8 grid grid-cols-3 gap-8 pr-8    ">
             {isLoading ? (
               <Spinner></Spinner>
             ) : (
@@ -44,8 +46,9 @@ function TopRated(props) {
           <div className="text-link ml-20 mt-14 pb-12 flex flex-row gap-8 content-center justify-center ">
               {Page.map((i,index) => { return(
                   
-                  <span key={index} onClick={(e) => handlPage(e)} 
-                    className=" transition hover:duration-700 ease-in-out  hover:scale-110 cursor-pointer bg-title bg-opacity-5  text-xl px-2 py-0.5 rounded-sm" >
+                  <span key={index} onClick={(e) => { scrollTo('#root')
+                    return handlPage(e)}} 
+                    className=" transition-all hover:duration-700 ease-in-out  hover:scale-110 cursor-pointer bg-title bg-opacity-5  text-xl px-2 py-0.5 rounded-sm" >
                     {index +1}</span>
                   
               )})} 

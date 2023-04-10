@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import MoviesCard2 from "./MoviesCardSideBar";
+import MoviesCard2 from "../CardMovies/MoviesCardSideBar";
 import Genres from "./Genres";
 import { fetcher } from "../../config";
 import useSWR from "swr";
@@ -23,9 +23,9 @@ function ContentSideBar(props) {
   }, [data]);
 
   return (
-    <div className="w-full">
+    <div className="w-full max-lg:hidden">
       <div className="font-medium  text-2xl mb-6 pt-20 pl-3">Top Movies</div>
-      <div className="mb-2" >
+      <div className="mb-2">
         {isLoading ? (
           <Spinner></Spinner>
         ) : (
@@ -44,10 +44,13 @@ function ContentSideBar(props) {
         )}
       </div>
 
-        <Link to={'/toprated'} className="  ml-8 px-32 border rounded-full py-2 border-link text-link text-lg  ">
-          {" "}
-          See All
-        </Link>
+      <Link
+        to={"/toprated"}
+        className="  ml-8 px-32 border rounded-full py-2 border-link text-link text-lg  "
+      >
+        {" "}
+        See All
+      </Link>
       <div>
         <Genres></Genres>
       </div>

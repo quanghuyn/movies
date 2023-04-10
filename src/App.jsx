@@ -3,7 +3,7 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css'
 import{Sidebar,Navbar} from './Component'
-import {ComingSoon,RecentPlayed,TopRated,Home,DetailMovies,Main} from './Page' 
+import {ComingSoon,Trending,TopRated,Home,DetailMovies,Main,Movies} from './Page' 
 
 function App(props) {
   return (
@@ -13,9 +13,10 @@ function App(props) {
                  <Route  path='/' element={<Main/>}>
                      <Route  path='/' element={<Home/>} ></Route>
                      <Route  path='/toprated' element={<TopRated/>}></Route>
+                      <Route  path='/comingsoon' element={<ComingSoon/>}></Route>
+                      <Route  path='/trending' element={<Trending/>}></Route>
                  </Route>
-                 <Route  path='/movies' element={<DetailMovies/>}></Route>
-                 <Route  path='/movies/:moviesId' element={<DetailMovies/>}></Route>
+                 <Route  path='/movies-details/:moviesId' element={<DetailMovies/>}></Route>
 
             </Routes>
 
