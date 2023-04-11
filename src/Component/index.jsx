@@ -11,7 +11,8 @@ export { default as CountinueWatch } from "./Dashboard/CountinueWatch.jsx";
 export { default as MoviesCard } from "./CardMovies/MoviesCard.jsx";
 export { default as MoviesCardSideBar } from "./CardMovies/MoviesCardSideBar.jsx";
 export { default as MoviesCardHome } from "./CardMovies/MoviesCardHome.jsx";
-export { default as MoviesCardTrending } from "./CardMovies/MoviesCardTrending.jsx";
+export { default as MoviesCardComingSoon } from "./CardMovies/MoviesCardComingSoon.jsx";
+export { default as MoviesCardDetail } from "./CardMovies/MoviesCardDetail.jsx";
 
 
 // export load

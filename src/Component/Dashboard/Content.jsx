@@ -46,7 +46,7 @@ function ContentSideBar(props) {
 
       <Link
         to={"/toprated"}
-        className="  ml-8 px-32 border rounded-full py-2 border-link text-link text-lg  "
+        className=" mx-4 grid justify-items-center px-20 border rounded-full py-2 border-link text-link text-lg  "
       >
         {" "}
         See All

@@ -1,13 +1,26 @@
-import React from 'react';
-import { CardDetail,BannerDetail } from '../../Component';
+import React, { useEffect, useState } from 'react';
+import {BannerDetail,MoviesCardDetail, Spinner } from '../../Component';
 
+import { fetcher } from "../../config";
+import useSWR from "swr";
+import { useParams } from 'react-router';
 
 function DetailMovies(props) {
+    const {moviesId} = useParams()
+    const apiDetail = `https://api.themoviedb.org/3/movie/${moviesId}?api_key=dc53e961c475e293222eece8d1187ddb&language=en-US`
+    const {data}  = useSWR(apiDetail,fetcher)
+    data && data.backdrop_path == null ? window.location = '/error' : null
+    console.log(data);
     return (
         <div>
-            <div className='' >
-                 <BannerDetail></BannerDetail>
-            </div>
+                { data ? <BannerDetail
+                    bg ={data.backdrop_path  }
+                    brfie ={data.overview}
+                    title ={data.original_title}
+                    gentes ={data.genres}
+                    runtime ={data.runtime}
+                 ></BannerDetail> : <Spinner></Spinner>}
+                
         </div>
     );
 }

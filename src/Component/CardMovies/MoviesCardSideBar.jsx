@@ -1,6 +1,6 @@
 import React from 'react';
 
-function MoviesCard2(props) {
+function MoviesCardSideBar(props) {
 
     return (
         <div className=' flex w-full my-1 rounded-md '>
@@ -34,4 +34,4 @@ function MoviesCard2(props) {
     );
 }
 
-export default MoviesCard2;
+export default MoviesCardSideBar;

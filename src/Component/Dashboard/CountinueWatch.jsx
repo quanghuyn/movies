@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-import MoviesCard from "../CardMovies/MoviesCard";
 import MoviesCardHome from "../CardMovies/MoviesCardHome";
 import { Swiper, SwiperSlide } from "swiper/react";
 import useSWR from "swr";
@@ -7,11 +6,9 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { fetcher } from "../../config";
 import Spinner from "../Load/Spinner";
-import { Link, NavLink } from "react-router-dom";
 import { Navigation } from "swiper";
 
-const apiTrending =
-  "https://api.themoviedb.org/3/trending/all/day?api_key=dc53e961c475e293222eece8d1187ddb";
+const apiTrending ="https://api.themoviedb.org/3/trending/all/day?api_key=dc53e961c475e293222eece8d1187ddb";
 function CountinueWatch(props) {
   const swiperRef = useRef();
   const { data, isLoading } = useSWR(apiTrending, fetcher);
