@@ -1,5 +1,6 @@
 import React from 'react';
 import imblogo from '../../Data/IMDb.png'
+import { Link } from 'react-router-dom';
 function MoviesCard(props) {
     const formatDate = (dateStr) => {
         const [year, month, day] = dateStr?.split('-');
@@ -8,7 +9,7 @@ function MoviesCard(props) {
       };
     return (
 
-        <div className='flex flex-col rounded-lg bg-movies text-fontactive max-sm:h-[560px] h-[460px] sele '>
+        <Link to={`/movies/${props.id}`} className='flex flex-col rounded-lg bg-movies text-fontactive max-sm:h-[560px] h-[460px] sele '>
         <div className=' w-[320px] h-[350px] absolute z-10 bg-gradient-to-r  from-cardmovies  to-cardmoviesto  '></div>
         <img src={`https://image.tmdb.org/t/p/w500${props.bg}`} alt=""
         className='w-full max-sm:h-[400px] h-[330px] object-fill max-sm:object-top  rounded-t-lg mb-5' />
@@ -27,7 +28,7 @@ function MoviesCard(props) {
 
             </div>
         </div>
-    </div>
+    </Link>
     );
 }
 

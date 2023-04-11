@@ -16,7 +16,7 @@ function App(props) {
                       <Route  path='/comingsoon' element={<ComingSoon/>}></Route>
                       {/* <Route  path='/trending' element={<Trending/>}></Route> */}
                  </Route>
-                 <Route  path='/movies-details/:moviesId' element={<DetailMovies/>}></Route>
+                 <Route  path='/movies/:moviesId' element={<DetailMovies/>}></Route>
                 <Route path='/error' element={<PageError/>} > </Route>
             </Routes>
 

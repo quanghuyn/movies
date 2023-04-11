@@ -3,9 +3,9 @@ import img from '../Data/notext.png'
 function PageError(props) {
     return (
         <div>
-            <div class=" text-fontactive  text-white min-h-screen flex ">
-            <img className='z-10' src={img} alt="" />
-                <div class="z-20 absolute container top-10 left-1/3 flex flex-row   ">
+            <div class=" text-fontactive  text-white min-h-screen flex   ">
+            <img className='z-50' src={img} alt="" />
+                <div class="z-50 absolute container top-10 left-1/3 flex flex-row text-   ">
                     <div className='flex flex-col items-center'>
                         <div class="text-7xl mb-8 font-medium">Oops</div>
                         <div class="text-xl md:text-3xl font-medium mb-4">

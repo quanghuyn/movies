@@ -41,7 +41,7 @@ function Trending(props) {
                                   <MoviesCardComingSoon
                                         title ={i.title}
                                         img ={i.backdrop_path}
-                                      
+                                        id = {i.id}
                                         date = {i.release_date}
                                     ></MoviesCardComingSoon> 
                            </SwiperSlide>
@@ -63,7 +63,7 @@ function Trending(props) {
 
                                         title ={i.title}
                                         bg ={i.poster_path}
-                                      
+                                        id = {i.id}
                                         releasedate = {i.release_date }
                                     ></MoviesCardHome>
                            </SwiperSlide>

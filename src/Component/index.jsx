@@ -17,6 +17,7 @@ export { default as MoviesCardDetail } from "./CardMovies/MoviesCardDetail.jsx";
 
 // export load
 export { default as Spinner } from "./Load/Spinner.jsx";
+export { default as DetailsLoad } from "./Load/DetailsLoad.jsx";
 
 //export detail
 

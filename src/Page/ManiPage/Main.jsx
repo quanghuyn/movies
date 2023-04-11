@@ -5,7 +5,6 @@ function Main(props) {
 
     return (
         <div>
-
           <Sidebar></Sidebar>
             <Outlet></Outlet>
         </div>

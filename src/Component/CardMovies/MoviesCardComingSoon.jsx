@@ -1,10 +1,11 @@
 import React from 'react';
 import { formatDate } from '../../config';
+import { Link } from 'react-router-dom';
 
 function MoviesCardComingSoon(props) {
 
     return (
-        <div className='flex movies-commingsoon w-[644px] '>
+        <Link to={`/movies/${props.id}`} className='flex movies-commingsoon w-[644px] '>
             <div className='relative '>
                  <div className='  absolute z-10 bg-main-dark-bg h-full w-full opacity-10 '></div>
 
@@ -23,7 +24,7 @@ function MoviesCardComingSoon(props) {
                     </div>
                 </div>
             </div>
-        </div>
+        </Link>
     );
 }
 

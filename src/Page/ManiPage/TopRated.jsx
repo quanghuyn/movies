@@ -38,6 +38,7 @@ function TopRated(props) {
                     title={item.title}
                     releasedate={item.release_date}
                     voteaverage={item.vote_average}
+                    id = {item.id}
                   ></MoviesCard>
                 );
               })
