@@ -13,7 +13,7 @@ export { default as MoviesCardSideBar } from "./CardMovies/MoviesCardSideBar.jsx
 export { default as MoviesCardHome } from "./CardMovies/MoviesCardHome.jsx";
 export { default as MoviesCardComingSoon } from "./CardMovies/MoviesCardComingSoon.jsx";
 export { default as MoviesCardDetail } from "./CardMovies/MoviesCardDetail.jsx";
-
+export { default as MoviCardResSize } from "./CardMovies/MoviCardResSize.jsx";
 
 // export load
 export { default as Spinner } from "./Load/Spinner.jsx";
@@ -22,4 +22,5 @@ export { default as DetailsLoad } from "./Load/DetailsLoad.jsx";
 //export detail
 
 export { default as BannerDetail } from "./DetailsFilm/BannerDetail.jsx";
-export { default as CardDetail } from "./DetailsFilm/CardDetail.jsx";
+export { default as Trailer } from "./DetailsFilm/Trailer.jsx";
+export { default as Actor } from "./DetailsFilm/Actor.jsx";

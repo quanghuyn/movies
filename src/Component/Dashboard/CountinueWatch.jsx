@@ -8,13 +8,13 @@ import { fetcher } from "../../config";
 import Spinner from "../Load/Spinner";
 import { Navigation } from "swiper";
 
-const apiTrending ="https://api.themoviedb.org/3/trending/all/day?api_key=dc53e961c475e293222eece8d1187ddb";
+const apiTrending =
+  "https://api.themoviedb.org/3/trending/all/day?api_key=dc53e961c475e293222eece8d1187ddb";
 function CountinueWatch(props) {
   const swiperRef = useRef();
   const { data, isLoading } = useSWR(apiTrending, fetcher);
 
   const [dataMovies, setDataMovies] = useState([]);
-console.log(data);
   useEffect(() => {
     data && setDataMovies(() => data.results);
   }, [data]);
@@ -27,13 +27,13 @@ console.log(data);
         </span>
 
         {/* // button pre/next slide */}
-        <div className=" flex flex-row  bg-opacity-10 ">
+        <div className=" flex flex-row  bg-opacity-10 translate-y-1 ">
           <button
-            className=" w-6 h-6 mt-3 mr-3 p-0.5 bg-fontnormal  bg-opacity-25 "
+            className=" w-6 h-6 mt-3 mr-3 p-0.5 bg-fontnormal  rounded-md bg-opacity-25  hover:bg-fontnormal transition-colors "
             onClick={() => swiperRef.current?.slidePrev()}
           >
             <svg
-              className=" cursor-pointer  w-6 h-6 "
+              className=" cursor-pointer pb-1 pr-1 w-6 h-6 "
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
@@ -48,11 +48,11 @@ console.log(data);
             </svg>
           </button>
           <button
-            className=" w-6 h-6 mt-3 mr-3 p-0.5 bg-fontnormal bg-opacity-25 "
+            className=" w-6 h-6 mt-3 mr-3 p-0.5 bg-fontnormal bg-opacity-25  rounded-md  hover:bg-fontnormal transition-colors"
             onClick={() => swiperRef.current?.slideNext()}
           >
             <svg
-              className=" cursor-pointer text-fontactive w-6 h-6 "
+              className=" cursor-pointer text-fontactive w-6 h-6  pb-1 pr-1 "
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
@@ -69,7 +69,7 @@ console.log(data);
         </div>
       </div>
 
-{/* // Slide Trending Movies */}
+      {/* // Slide Trending Movies */}
       <Swiper
         grabCursor={"true"}
         spaceBetween={20}
@@ -83,14 +83,14 @@ console.log(data);
           return (
             <SwiperSlide key={item.id}>
               {isLoading ? (
-                <Spinner> </Spinner>
+                <Spinner></Spinner>
               ) : (
                 <MoviesCardHome
                   bg={item.poster_path}
                   title={item.title}
                   releasedate={item.release_date}
                   voteaverage={item.vote_average}
-                  id = {item.id}
+                  id={item.id}
                 ></MoviesCardHome>
               )}
             </SwiperSlide>

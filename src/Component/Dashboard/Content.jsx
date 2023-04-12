@@ -38,7 +38,7 @@ function ContentSideBar(props) {
                 releasedate={item.release_date}
                 voteaverage={item.vote_average}
                 lg={item.original_language}
-                id = {item.id}
+                id={item.id}
               ></MoviesCard2>
             );
           })

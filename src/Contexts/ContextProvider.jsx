@@ -1,18 +1,16 @@
 import { createContext, useContext, useState } from "react";
 
-const SetContext = createContext()
+export const SetContext = createContext();
 
-export const ContextProvider = () => {
-    const [active,setActive] = useState(false)
+  export const ContextProvider = ({children}) => {
+  const [active, setActive] = useState(false);
+  const [openTrailer,setOpenTrailer] = useState(false)
+  const hanldClose = () =>{
+    setOpenTrailer(!openTrailer)
+  }
 
-    const value = {active,setActive}
-    return(
-        <SetContext.Provider value={value} ></SetContext.Provider>
-    )
-}
+  const value = { hanldClose ,openTrailer};
+  return (<SetContext.Provider value={value}>{children}</SetContext.Provider>);
+};
 
-export const useSateContext = () => {
-    const context= useContext(SetContext)
-    if(typeof context === undefined) throw new Error('must be use within Context')
-    return context
-}
+// export default ContextProvider
