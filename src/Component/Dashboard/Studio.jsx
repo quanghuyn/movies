@@ -8,7 +8,7 @@ const dataStudio = [
       <div>
         <a className="inline-block" href="repet">
           <svg
-            className=""
+            className="bg-bg dark:bg-main-dark-bg rounded-lg"
             width="177"
             height="88"
             viewBox="0 0 177 88"
@@ -37,6 +37,7 @@ const dataStudio = [
       <div>
         <a className="inline-block" href="repet">
           <svg
+            className="bg-bg dark:bg-main-dark-bg rounded-lg"
             width="176"
             height="88"
             viewBox="0 0 176 88"
@@ -73,6 +74,7 @@ const dataStudio = [
       <div>
         <a className="inline-block" href="repet">
           <svg
+            className="bg-bg dark:bg-main-dark-bg rounded-lg"
             width="176"
             height="96"
             viewBox="0 0 176 96"
@@ -103,6 +105,7 @@ const dataStudio = [
       <div>
         <a className="inline-block" href="repet">
           <svg
+            className="bg-bg dark:bg-main-dark-bg rounded-lg"
             width="177"
             height="88"
             viewBox="0 0 177 88"
@@ -143,11 +146,11 @@ const dataStudio = [
 
 function Studio(props) {
   return (
-    <div className=" pl-6 h-full w-full  ">
+    <div className=" pl-6 h-full w-full   ">
       <Swiper grabCursor={"true"} spaceBetween={20} slidesPerView={"auto"}>
         {dataStudio.map((item, index) => {
           return (
-            <SwiperSlide className="w-44 " key={index}>
+            <SwiperSlide className="w-44" key={index}>
               {item.content}
             </SwiperSlide>
           );

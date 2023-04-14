@@ -4,12 +4,16 @@ module.exports = {
   darkMode: "class",
   theme: {
     colors: {
+      textlight : '#171725',
+      light : '#FEFDFF',
       fontnormal: "#78828A",
       fontactive: "#F9F9F9",
       active: "rgba(115,40,150, 0.6)",
       title: "#9CA4AB",
       primary: "rgba(var(--color-primary),1)",
       link: "#b43feb",
+      linkvia: "#b43feb40",
+      linkto: "#b43feb00",
       tobg: "#0D0C0F",
       viabg: "#0D0C0F50",
       frombg: "#0D0C0F00",
@@ -31,6 +35,9 @@ module.exports = {
       backgroundColor: {
         movies: "#4a4a4a10",
         "main-bg": "#FAFBFB",
+        "light-bg" : '#FEFDFF',
+        'sc-bglight': '#393E4650',
+        "bg" : '#D3D3D3',
         "main-dark-bg": "#0D0C0F",
         "secondary-dark-bg": " #1A161F",
         "half-transparent": "rgba(144,50,188, 0.5)",

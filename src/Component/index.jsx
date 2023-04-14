@@ -3,6 +3,7 @@ export { default as Navbar } from "./Navbar.jsx";
 
 // export dash board
 export { default as Banner } from "./Dashboard/Banner.jsx";
+export { default as BannerMoviesPage } from "./Dashboard/BannerMoviesPage.jsx";
 export { default as Studio } from "./Dashboard/Studio.jsx";
 export { default as ContentSideBar } from "./Dashboard/Content.jsx";
 export { default as CountinueWatch } from "./Dashboard/CountinueWatch.jsx";

@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import imblogo from "../../Data/IMDb.png";
 import Actor from "./Actor";
-import {SetContext} from "../../Contexts/ContextProvider"
+import {useStateContext} from "../../Contexts/ContextProvider"
 function BannerDetail(props) {
   const calcTime = (time) => {
     const str = time / 60;
@@ -9,10 +9,10 @@ function BannerDetail(props) {
     const minute = Math.round(60 * (str - Math.floor(str)));
     return `${hour}h ${minute}m`;
   };
-  const {hanldClose} = useContext(SetContext)
+  const {hanldClose} = useStateContext()
 
   return (
-    <div className="relative h-full bg-main-dark-bg">
+    <div className="relative h-full dark:bg-main-dark-bg">
       {/* info movies */}
       <div className="text-fontactive flex flex-col justify-start absolute bottom-20   left-28 contrast-100  z-20">
         <h2 className="text-5xl mb-8 ">{props.title}</h2>

@@ -20,10 +20,12 @@ body {
     animation: spin 3s linear infinite;
   }
   :root {
-    --color-primary: rgb(180, 63, 235);
-
+    --color-primary: rgb(181, 63, 235);
+    
     /* ... */
   }
+
+  
   .movies-list .swiper-slide {
     width: 340px;
     height: auto;
@@ -34,8 +36,14 @@ body {
   .movies-commingsoon .swiper-slide {
     width: 640px;
   }
+  .linkSideBar{
+    @apply flex items-center h-10 w-full mt-4 pl-7 dark:text-fontnormal font-semibold font-[Inter] cursor-pointer;
+  }
+  .linkSideBarActive{
+    @apply cursor-pointer  bg-gradient-to-r from-active  flex items-center h-10 w-full mt-4 pl-7 dark:text-fontactive font-semibold  border-r-2 border-active ;
+  }
   .link {
-    @apply flex items-center font-medium relative after:absolute after:-bottom-1 after:left-0 after:bg-link after:h-0.5 after:w-0 hover:after:w-full after:transition-all after:ease-in-out;
+    @apply   font-bold flex items-center dark:font-medium relative after:absolute after:-bottom-1 after:left-0 after:bg-link after:h-0.5 after:w-0 hover:after:w-full after:transition-all after:ease-in-out;
   }
   .linkActive {
     @apply border-active flex items-center font-medium  border-b-2 border-link   after:absolute relative after:bottom-6 h-8 my-6;
@@ -45,10 +53,10 @@ body {
   }
 
   .navbar {
-    @apply bg-main-dark-bg  flex  flex-row content-center  h-72  text-fontactive fixed w-screen top-0 z-40;
+    @apply dark:bg-main-dark-bg bg-bg flex  flex-row content-center  h-72  dark:text-fontactive fixed w-screen top-0 z-40;
   }
   .navbarLocation {
-    @apply bg-main-dark-bg flex flex-row content-center  h-72  text-fontactive fixed w-screen top-0  bg-opacity-40 z-40;
+    @apply dark:bg-main-dark-bg flex flex-row content-center  h-72  dark:text-fontactive  w-screen top-0  bg-opacity-40 z-40;
   }
   .gradient {
     background-image: linear-gradient(135deg, #684ca0 35%, #1c4ca0 100%);
@@ -68,12 +76,11 @@ body {
   .cards {
     position: relative;
     width: 100%;
-    height: 250px;
+    height: 350px;
     display: flex;
     align-items: center;
     /* justify-content: center; */
     overflow-x: auto;
-    background-color: rgb(93, 87, 87);
     /* margin-top: 150px; */
     scroll-behavior: smooth;
     overflow-x: scroll;
@@ -84,15 +91,16 @@ body {
   }
   .cards .card {
     position: relative;
-    min-width: 300px;
-    height: 250px;
+    min-width: 350px;
+    height: 350px;
 
-    /* transition: .3 ease-in-out; */
+    transition: .5 ease-in-out;
     margin-left: 20px;
   }
   .cards .card:hover {
-    min-width: 600px;
+    min-width: 650px;
     overflow: hidden;
+    transition: .5s ease-in-out
   }
   .cards .card .poster {
     position: relative;
@@ -129,12 +137,20 @@ body {
     left: 0;
     bottom: 0;
   }
-  .cards .card .rest_card .cont {
+  .cont{
+    color: white;
+  }
+  .cards .card .rest_card:hover .cont {
     position: absolute;
     width: 100%;
-    bottom: 10px;
+    height: 70px;
+    bottom: 0px;
     left: 0;
-    padding: 0px 23px;
+    color: white;
+    padding: 4px 23px;
+    background-color: rgba(0, 0, 0, 0.299);
+    transition: all 0.5s ease-out;
+    color: white;
   }
   .cards .card .rest_card .cont .sub {
     display: flex;
@@ -148,20 +164,150 @@ body {
   .icon_right,
   .icon_left {
     position: absolute;
-    top: 50%;
-    left: 1%;
-    width: 25px;
-    height: 25px;
-    background-color: #71747a85;
-    border-radius: 50%;
-    z-index: 999999;
+    top: 40%;
+    left: -6px;
+    width: 20px;
+    height: 80px;
+    background-color: #9c9c9c98;
+    border-radius: 4px;
     display: flex;
     justify-content: center;
+    align-items: center;
+    z-index: 999999;
     cursor: pointer;
     transition: 0.3 linear;
   }
   .icon_right {
     left: unset;
-    right: 1%;
+    right: 0.5%;
   }
+  .icon_right:hover , .icon_left:hover {
+    background-color: rgb(197, 197, 197);
+  }
+
+
+
+
+
+/* CSS button dark mode */
+
+#toggle_checkbox
+{
+    /* padding-top: 20px; */
+    display: none;
+}
+
+label
+{
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 10px;
+    /* left: 0; */
+    /* width: 116px; */
+    width: 100px;
+    /* height: 56px; */
+    height: 45px;
+    margin: 0 auto;
+    background-color: #b1aaaa;
+    border-radius: 56px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    transition: 0.3s ease background-color;
+    overflow: hidden;
+}
+
+#star
+{
+    position: absolute;
+    top: 7px;
+    left: 13px;
+    width: 28px;
+    height: 28px;
+    background-color: #fafd0f;
+    transform: scale(1);
+    border-radius: 50%;
+    transition: 0.3s ease top, 0.3s ease left, 0.3s ease transform, 0.3s ease background-color;
+    z-index: 1;
+}
+
+#star-1
+{ 
+    position: relative;
+}
+
+#star-2
+{
+    position: absolute;
+    transform: rotateZ(36deg);
+}
+
+.star
+{
+    
+    top: -2px;
+    left: -6px;
+    font-size: 50px;
+    line-height: 28px;
+    color: #fafd0f;
+    transition: 1s ease color;
+}
+
+#moon
+{
+    position: absolute;
+    bottom: -52px;
+    right: 8px;
+    width: 33px;
+    height: 35px;
+    background-color: #fff;
+    border-radius: 50%;
+    transition: .5s ease bottom;
+    
+}
+
+#moon:before
+{
+    content: "";
+    position: absolute;
+    top: -12px;
+    left: -17px;
+    width: 40px;
+    height: 40px;
+    background-color:#d91bdc00;
+    border-radius: 50%;
+    transition: .1s ease background-color;
+}
+
+#toggle_checkbox:checked + label
+{
+    background-color: #000000;
+}
+
+#toggle_checkbox:checked + label #star
+{   top: 0px;
+    left: 62px;
+    transform: scale(0.3);
+    background-color: yellow;
+    /* visibility: hidden; */
+
+}
+
+#toggle_checkbox:checked + label .star
+{
+    color: yellow;
+    visibility: hidden;
+
+}
+
+#toggle_checkbox:checked + label #moon
+{
+    bottom: 8px;
+}
+
+#toggle_checkbox:checked + label #moon:before
+{
+    background-color: #000000;
+}
+
 }

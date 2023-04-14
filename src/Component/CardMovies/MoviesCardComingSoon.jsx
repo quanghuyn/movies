@@ -1,6 +1,7 @@
 import React from "react";
 import { formatDate } from "../../config";
 import { Link } from "react-router-dom";
+import {Poster} from "../../config"
 
 function MoviesCardComingSoon(props) {
   return (
@@ -13,7 +14,7 @@ function MoviesCardComingSoon(props) {
 
         <img
           className="  w-[644px] h-[366px] rounded-3xl object-cover contrast-125"
-          src={`https://image.tmdb.org/t/p/w500${props.img}`}
+          src={`${Poster}${props.img}`}
           alt=""
         />
 

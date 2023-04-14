@@ -1,14 +1,26 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { fetcher } from "../../config";
+import useSWR from "swr";
+
+import {Poster} from "../../config"
+
 
 function MoviCardResSize(props) {
   const ref = useRef(null);
   function scroll(scrollOffset) {
     ref.current.scrollLeft += scrollOffset;
   }
+
+  const apiPopular = 'https://api.themoviedb.org/3/movie/popular?api_key=dc53e961c475e293222eece8d1187ddb&language=en-US&page=1'
+  const { data } = useSWR(apiPopular, fetcher);
+  const [dataPop, setDataPop] = useState([]);
+  useEffect(()=>{
+    data && setDataPop(()=> data.results)
+  },[data])
+  console.log(dataPop);
   return (
-    <div className="">
-      <div className=" cards scrollbar " ref={ref}>
-        <button className="icon_right" onClick={() => scroll(320)}>
+    <div className="dark:bg-main-dark-bg relative scr ml-4">
+        <button className="icon_right" onClick={() => scroll(370)}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -24,7 +36,7 @@ function MoviCardResSize(props) {
             />
           </svg>
         </button>
-        <button className="icon_left" onClick={() => scroll(-320)}>
+        <button className="icon_left" onClick={() => scroll(-370)}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -40,10 +52,13 @@ function MoviCardResSize(props) {
             />
           </svg>
         </button>
-        <a className=" card" href="">
+      <div className=" cards scrollbar relative" ref={ref}>
+
+        {data && dataPop.map(i=>{return(
+            <a key={i.id} className=" card" href="">
           <img
             className="poster"
-            src="https://image.tmdb.org/t/p/w500/A3ZbZsmsvNGdprRi2lKgGEeVLEH.jpg"
+            src={`${Poster}${i.poster_path}`}
             alt=""
           />
 
@@ -51,15 +66,17 @@ function MoviCardResSize(props) {
             {/* <video src="https://youtu.be/vVgMqtCW_Dw"></video> */}
             <img
               className=""
-              src="	https://image.tmdb.org/t/p/w500/9n2tJBplPbgR2ca05hS5CKXwP2c.jpg"
+              src={`${Poster}${i.backdrop_path}`}
+
               alt=""
             />
             <div className="cont">
-              <p>Action 2023</p>
-              <h3>IBM</h3>
+              <h3 className="text-xl mb-1" >{i.title}</h3>
+              <p className="pl-2">{i.release_date}</p>
             </div>
           </div>
-        </a>
+            </a>
+        )})}
       </div>
     </div>
   );

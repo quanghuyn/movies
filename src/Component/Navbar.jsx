@@ -41,7 +41,7 @@ function Navbar(props) {
         Cinemax{" "}
       </NavLink>
 
-      <div className="flex justify-around  gap-4 max-w-[347px] content-center ml-10 mr-11 w-3/12 max-lg:hidden">
+      <div className="flex justify-around  gap-4 max-w-[347px] content-center ml-10 mr-11 w-3/12 max-lg:hidden ">
         {data.map((item, index) => {
           return (
             <div key={index} className="flex items-center">
@@ -60,7 +60,7 @@ function Navbar(props) {
         <input
           type="text"
           placeholder="Search"
-          className=" bg-opacity-10 max-sm:hidden  max-lg:ml-20  pl-3 pb-1 placeholder:text-fontnormal  focus:outline-none text-opacity-60 bg-main-dark-bg h-7 rounded-full w-30  border border-fontnormal"
+          className=" bg-opacity-10 max-sm:hidden  max-lg:ml-20  pl-3 pb-1 placeholder:text-fontnormal  focus:outline-none text-opacity-60 dark:bg-main-dark-bg h-7 rounded-full w-30  border border-fontnormal"
         />
         <span>
           <svg
@@ -80,7 +80,7 @@ function Navbar(props) {
       </div>
       {/* Sub */}
       <div className="flex items-center w-2/12 max-lg:absolute max-lg:right-32 max-lg:top-3 max-sm:right-40  max-sm:mr-4">
-        <button className="bg-link rounded-full text-xl  pt-2 pb-2  pl-5 pr-5 ml-16 font-semibold">
+        <button className="bg-link rounded-full text-xl  pt-2 pb-2  pl-5 pr-5 ml-16 font-semibold text-fontactive">
           Subscribe
         </button>
       </div>

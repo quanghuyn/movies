@@ -20,9 +20,9 @@ function CountinueWatch(props) {
   }, [data]);
 
   return (
-    <div className="movies-list bg-main-dark-bg pt-4 ">
+    <div className="movies-list dark:bg-main-dark-bg pt-4 ">
       <div className="pt-2 pb-4 pl-2 flex flex-row justify-between items-center z-10 relative ">
-        <span className="text-2xl text-fontactive font-medium ">
+        <span className="text-2xl dark:text-fontactive font-medium ">
           Trending movies
         </span>
 

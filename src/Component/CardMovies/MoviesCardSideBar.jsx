@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import {Poster} from "../../config"
 
 function MoviesCardSideBar(props) {
   return (
@@ -9,12 +10,12 @@ function MoviesCardSideBar(props) {
           <div className="  absolute z-10 bg-gradient-to-r  w-[112px] h-[140px] from-cardmovies  to-cardmoviesto  "></div>
           <img
             className=" cursor-pointer shadow-lg w-[112px] h-[140px] rounded-xl  border border-fontnormal border-opacity-20   object-center "
-            src={`https://image.tmdb.org/t/p/w500${props.bg}`}
+            src={`${Poster}${props.bg}`}
             alt=""
           />
         </div>
         <div className="flex flex-col justify-between pl-4   h-[140px] ">
-          <span className="text-fontactive text-l font-semibold  mt-2 ">
+          <span className="dark:text-fontactive text-l font-semibold  mt-2 ">
             {props.title}
           </span>
           <div className="flex flex-col text-sm">

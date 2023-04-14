@@ -1,6 +1,7 @@
 import React from "react";
 import imblogo from "../../Data/IMDb.png";
 import { Link } from "react-router-dom";
+import {Poster} from "../../config"
 
 function MoviesCardHome(props) {
   const formatDate = (dateStr) => {
@@ -12,11 +13,11 @@ function MoviesCardHome(props) {
   return (
     <Link
       to={`/movies/${props.id}`}
-      className=" ease-in-out hover:duration-300 hover:scale-110 flex flex-col rounded-lg bg-movies text-fontactive h-[460px]  mt-4   "
+      className=" ease-in-out hover:duration-300 hover:scale-110 flex flex-col rounded-lg dark:bg-movies bg-sc-bglight dark:text-fontactive h-[460px]  mt-4   "
     >
       <div className="   w-[320px] h-[300px] absolute z-10 bg-gradient-to-r  from-cardmovies  to-cardmoviesto  "></div>
       <img
-        src={`https://image.tmdb.org/t/p/w500${props.bg}`}
+        src={`${Poster}${props.bg}`}
         alt=""
         className="w-full h-[300px] object-center  rounded-t-lg mb-5  contrast-125"
       />

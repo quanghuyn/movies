@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { useStateContext } from "../Contexts/ContextProvider";
+import ButtonSetMode from "./Dashboard/ButtonSetMode";
 
 const data = [
   {
@@ -38,42 +40,42 @@ const data = [
       </svg>
     ),
   },
-  {
-    title: "Trending",
-    name: "trending",
-    icon: (
-      <svg
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M12 22.75C6.07 22.75 1.25 17.93 1.25 12C1.25 6.07 6.07 1.25 12 1.25C17.93 1.25 22.75 6.07 22.75 12C22.75 17.93 17.93 22.75 12 22.75ZM12 2.75C6.9 2.75 2.75 6.9 2.75 12C2.75 17.1 6.9 21.25 12 21.25C17.1 21.25 21.25 17.1 21.25 12C21.25 6.9 17.1 2.75 12 2.75Z"
-          fill="#78828A"
-        />
-        <path
-          d="M15.71 15.93C15.58 15.93 15.45 15.9 15.33 15.82L12.23 13.97C11.46 13.51 10.89 12.5 10.89 11.61V7.51001C10.89 7.10001 11.23 6.76001 11.64 6.76001C12.05 6.76001 12.39 7.10001 12.39 7.51001V11.61C12.39 11.97 12.69 12.5 13 12.68L16.1 14.53C16.46 14.74 16.57 15.2 16.36 15.56C16.21 15.8 15.96 15.93 15.71 15.93Z"
-          fill="#78828A"
-        />
-      </svg>
-    ),
-    iconactive: (
-      <svg
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M12 2C6.49 2 2 6.49 2 12C2 17.51 6.49 22 12 22C17.51 22 22 17.51 22 12C22 6.49 17.51 2 12 2ZM16.35 15.57C16.21 15.81 15.96 15.94 15.7 15.94C15.57 15.94 15.44 15.91 15.32 15.83L12.22 13.98C11.45 13.52 10.88 12.51 10.88 11.62V7.52C10.88 7.11 11.22 6.77 11.63 6.77C12.04 6.77 12.38 7.11 12.38 7.52V11.62C12.38 11.98 12.68 12.51 12.99 12.69L16.09 14.54C16.45 14.75 16.57 15.21 16.35 15.57Z"
-          fill="#B43FEB"
-        />
-      </svg>
-    ),
-  },
+  // {
+  //   title: "Trending",
+  //   name: "trending",
+  //   icon: (
+  //     <svg
+  //       width="24"
+  //       height="24"
+  //       viewBox="0 0 24 24"
+  //       fill="none"
+  //       xmlns="http://www.w3.org/2000/svg"
+  //     >
+  //       <path
+  //         d="M12 22.75C6.07 22.75 1.25 17.93 1.25 12C1.25 6.07 6.07 1.25 12 1.25C17.93 1.25 22.75 6.07 22.75 12C22.75 17.93 17.93 22.75 12 22.75ZM12 2.75C6.9 2.75 2.75 6.9 2.75 12C2.75 17.1 6.9 21.25 12 21.25C17.1 21.25 21.25 17.1 21.25 12C21.25 6.9 17.1 2.75 12 2.75Z"
+  //         fill="#78828A"
+  //       />
+  //       <path
+  //         d="M15.71 15.93C15.58 15.93 15.45 15.9 15.33 15.82L12.23 13.97C11.46 13.51 10.89 12.5 10.89 11.61V7.51001C10.89 7.10001 11.23 6.76001 11.64 6.76001C12.05 6.76001 12.39 7.10001 12.39 7.51001V11.61C12.39 11.97 12.69 12.5 13 12.68L16.1 14.53C16.46 14.74 16.57 15.2 16.36 15.56C16.21 15.8 15.96 15.93 15.71 15.93Z"
+  //         fill="#78828A"
+  //       />
+  //     </svg>
+  //   ),
+  //   iconactive: (
+  //     <svg
+  //       width="24"
+  //       height="24"
+  //       viewBox="0 0 24 24"
+  //       fill="none"
+  //       xmlns="http://www.w3.org/2000/svg"
+  //     >
+  //       <path
+  //         d="M12 2C6.49 2 2 6.49 2 12C2 17.51 6.49 22 12 22C17.51 22 22 17.51 22 12C22 6.49 17.51 2 12 2ZM16.35 15.57C16.21 15.81 15.96 15.94 15.7 15.94C15.57 15.94 15.44 15.91 15.32 15.83L12.22 13.98C11.45 13.52 10.88 12.51 10.88 11.62V7.52C10.88 7.11 11.22 6.77 11.63 6.77C12.04 6.77 12.38 7.11 12.38 7.52V11.62C12.38 11.98 12.68 12.51 12.99 12.69L16.09 14.54C16.45 14.75 16.57 15.21 16.35 15.57Z"
+  //         fill="#B43FEB"
+  //       />
+  //     </svg>
+  //   ),
+  // },
   {
     title: "Top Rated",
 
@@ -154,16 +156,12 @@ const data = [
   },
 ];
 
-const link =
-  "flex items-center h-10 w-full mt-4 pl-7 text-fontnormal font-semibold font-[Inter] cursor-pointer ";
-const linkActive =
-  " cursor-pointer  bg-gradient-to-r from-active  flex items-center h-10 w-full mt-4 pl-7 text-fontactive font-semibold font-[Inter] border-r-2 border-active transition-color ";
-
 function Sidebar(props) {
+  const {handlMode,mode} = useStateContext
   return (
-    <div className=" max-lg:hidden  flex flex-col  h-full bg-secondary-dark-bg  -ml-1 w-1/6  fixed mt-2 top-16  ">
+    <div className=" max-lg:hidden  flex flex-col  h-full dark:bg-secondary-dark-bg bg-bg  -ml-1 w-1/6  fixed mt-2 top-16  ">
       <div className="pt-12 pl-8 w-full">
-        <span className="text-title font-normal font-[Inter]  bg-primary ">
+        <span className="dark:text-title font-normal font-[Inter]  bg-primary ">
           MENU
         </span>
       </div>
@@ -172,7 +170,7 @@ function Sidebar(props) {
         return (
           <div key={index}>
             <NavLink
-              className={({ isActive }) => (isActive ? linkActive : link)}
+              className={({ isActive }) => (isActive ? 'linkSideBarActive' : 'linkSideBar')}
               to={`/${item.name}`}
               key={item.name}
             >
@@ -182,30 +180,13 @@ function Sidebar(props) {
           </div>
         );
       })}
+
+      {/* button set mode */}
+      <div>
+        <ButtonSetMode></ButtonSetMode>
+      </div>
     </div>
   );
 }
 
 export default Sidebar;
-
-{
-  /* <div className=' relative flex h-screen w-64 bg-secondary-dark-bg'>
-            <div className='absolute top-0 h-full w-full left-0 ' >
-                <div className='mt-12 ml-8 text-fontnormal ' >Menu</div>
-
-                <div className='w-full mt-4 relative'>
-                    <div className='flex  items-center w-full  h-10  gap-7 pb-4'>
-                        <div className=' flex  ml-7  pt-2 pb-2'>
-                            <span className='  items-center' >
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M20.98 3.02001C20.11 2.15001 18.88 1.81001 17.69 2.11001L7.88998 4.56001C6.23998 4.97001 4.96998 6.25001 4.55998 7.89001L2.10998 17.7C1.80998 18.89 2.14998 20.12 3.01998 20.99C3.67998 21.64 4.54998 22 5.44998 22C5.72998 22 6.01998 21.97 6.29998 21.89L16.11 19.44C17.75 19.03 19.03 17.76 19.44 16.11L21.89
-                            6.30001C22.19 5.11001 21.85 3.88001 20.98 3.02001ZM12 15.88C9.85998 15.88 8.11998 14.14 8.11998 12C8.11998 9.86001 9.85998 8.12001 12 8.12001C14.14 8.12001 15.88 9.86001 15.88 12C15.88 14.14 14.14 15.88 12 15.88Z" fill="#B43FEB"/>
-                            </svg>
-                            </span>
-                            <span className='text-white pl-1 text-16 font-medium text-fontnormal '>Discovery</span>
-                        </div>
-                    </div>
-                </div> 
-            </div>
-        </div> */
-}

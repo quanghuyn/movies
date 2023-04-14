@@ -14,7 +14,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 function Home(props) {
   const apiTrending =
-    "https://api.themoviedb.org/3/trending/all/day?api_key=dc53e961c475e293222eece8d1187ddb";
+    "https://api.themoviedb.org/3/movie/popular?api_key=dc53e961c475e293222eece8d1187ddb&language=en-US&page=1&region=us";
   const { data, error } = useSWR(apiTrending, fetcher);
   error ? (window.location = "/error") : null;
 
@@ -31,7 +31,7 @@ function Home(props) {
   return (
     // bg-main-dark-bg h-[1000px] w-1600
     <div className=" max-lg:left-0  absolute right-0  max-lg:w-full w-5/6">
-      <div className="   flex  bg-main-dark-bg   -ml-1 lg:pl-6  pb-20  max-sm:h-full lg:h-[1180px]">
+      <div className="   flex bg-light-bg dark:bg-main-dark-bg   -ml-1 lg:pl-6  pb-20  max-sm:h-full lg:h-[1180px]">
         <div className=" flex flex-row w-full">
           <div className="   max-lg:w-full lg:w-2/3 ">
             <div className="flex flex-col  h-[990px] ">
@@ -69,7 +69,7 @@ function Home(props) {
             </div>
           </div>
 
-          <div className=" pl-3 w-1/3 border-active text-fontactive max-lg:hidden ">
+          <div className=" bg-light pl-3 w-1/3 dark:border-active dark:text-fontactive max-lg:hidden dark:bg-main-dark-bg">
             <ContentSideBar>content</ContentSideBar>
           </div>
         </div>

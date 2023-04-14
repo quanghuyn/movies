@@ -2,14 +2,14 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import { fetcher } from "../../config";
 import useSWR from "swr";
 import { useParams } from "react-router";
-import {SetContext} from "../../Contexts/ContextProvider"
+import {useStateContext} from "../../Contexts/ContextProvider"
 
 function Trailer(props) {
   const ref = useRef(null)
   const apiVideo =`https://api.themoviedb.org/3/movie/${props.id}/videos?api_key=dc53e961c475e293222eece8d1187ddb&language=en-US`
 
   const { data, isLoading, error } = useSWR(apiVideo, fetcher);
-  const {hanldClose,openTrailer} = useContext(SetContext)
+  const {hanldClose,openTrailer} = useStateContext()
   const [key,setKey] = useState()
   useEffect(()=>{
     data && setKey(data.results[0].key)
@@ -19,7 +19,7 @@ function Trailer(props) {
     <div>
       <div  ref={ref} onClick={()=> hanldClose()}  className={`bg-main-dark-bg w-full min-h-screen h-[700px] z-40 absolute top-0 bg-opacity-60 ${openTrailer ? null:'hidden'}`}>
           <div onClick={()=> hanldClose()}
-          className=" p-1 cursor-pointer absolute top-20 z-50 bg-tobg rounded-full bg-opacity-40 right-28 hover:bg-main-dark-bg ">
+          className=" p-1 cursor-pointer absolute top-20 z-50 bg-tobg rounded-full bg-opacity-40 right-20 hover:bg-main-dark-bg ">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="#ffffff"
