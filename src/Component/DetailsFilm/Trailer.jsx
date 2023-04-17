@@ -12,7 +12,7 @@ function Trailer(props) {
   const {hanldClose,openTrailer} = useStateContext()
   const [key,setKey] = useState()
   useEffect(()=>{
-    data && setKey(data.results[0].key)
+    data && setKey(data?.results[0]?.key)
   },[data])
 
   return (

@@ -3,16 +3,6 @@ import { useStateContext } from '../../Contexts/ContextProvider';
 
 function ButtonSetMode(props) {
     const {mode,toggleDarklMode} = useStateContext()
-    console.log(mode);
-    // const [checked, setChecked] = React.useState(true);
-    useEffect(()=>{
-        if (mode === 'dark') {
-          document.documentElement.classList.add('dark')
-        }
-        else {
-          document.documentElement.classList.remove('dark')
-        }
-    },[mode])
     return (
         <div className='absolute bottom-[110px] left-[140px] '>
             <div className='relative'>

@@ -19,6 +19,8 @@ export { default as MoviCardResSize } from "./CardMovies/MoviCardResSize.jsx";
 // export load
 export { default as Spinner } from "./Load/Spinner.jsx";
 export { default as DetailsLoad } from "./Load/DetailsLoad.jsx";
+export { default as SvgAnimate } from "./Load/svgAnimate.jsx";
+export { default as Skeleton } from "./Load/Skeleton.jsx";
 
 //export detail
 

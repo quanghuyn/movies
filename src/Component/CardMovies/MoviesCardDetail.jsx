@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import {Poster} from "../../config"
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 function MoviesCardDetail(props) {
   return (
@@ -9,7 +10,7 @@ function MoviesCardDetail(props) {
       className="flex flex-col rounded-lg bg-movies text-fontactive h-[460px]  mt-4   "
     >
       <div className=" w-[320px] h-[300px] absolute z-10 bg-gradient-to-r  from-cardmovies  to-cardmoviesto  "></div>
-      <img
+      <LazyLoadImage
         src={`${Poster}${props.bg}`}
         alt=""
         className="w-full h-[300px] object-center  rounded-t-lg mb-5  contrast-125"

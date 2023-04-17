@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { fetcher } from "../../config";
 import useSWR from "swr";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+
 function Actor(props) {
   const apiCast = `https://api.themoviedb.org/3/movie/${props.id}/credits?api_key=dc53e961c475e293222eece8d1187ddb&language=en-US`;
   const { data } = useSWR(apiCast, fetcher);
@@ -18,7 +20,7 @@ function Actor(props) {
           dataCast.map((i) => {
             return (
               <div key={i.id} className="flex flex-col justify-center">
-                <img
+                <LazyLoadImage
                   className="rounded-full w-16 h-16 object-cover mb-2"
                   src={`https://image.tmdb.org/t/p/w500${i.profile_path}`}
                   alt=""

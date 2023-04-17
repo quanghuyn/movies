@@ -4,30 +4,15 @@ import {
   Studio,
   ContentSideBar,
   CountinueWatch,
+  Skeleton,
 } from "../../Component";
-import { fetcher } from "../../config";
-import useSWR from "swr";
+import {useFetch} from "../../Hooks/useFetch"
+// lib slider
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, Navigation } from "swiper";
-
-import "swiper/css";
-import "swiper/css/pagination";
 function Home(props) {
-  const apiTrending =
-    "https://api.themoviedb.org/3/movie/popular?api_key=dc53e961c475e293222eece8d1187ddb&language=en-US&page=1&region=us";
-  const { data, error } = useSWR(apiTrending, fetcher);
-  error ? (window.location = "/error") : null;
-
-  const [dataBaner, setDataBaner] = useState([]);
-
-  useEffect(() => {
-    data &&
-      setDataBaner(() => {
-        return data.results.slice(0, 5);
-      });
-  }, [data]);
-
-
+  // call api from useFetch
+  const {dataFetch,isLoading,error} =  useFetch('popular')
   return (
     // bg-main-dark-bg h-[1000px] w-1600
     <div className=" max-lg:left-0  absolute right-0  max-lg:w-full w-5/6">
@@ -35,7 +20,8 @@ function Home(props) {
         <div className=" flex flex-row w-full">
           <div className="   max-lg:w-full lg:w-2/3 ">
             <div className="flex flex-col  h-[990px] ">
-              <div className=" max-lg:w-full  lg:basis-3/6">
+              <div className=" max-lg:w-full  min-h-h-[400px] lg:basis-3/6">
+                {isLoading && <Skeleton className="absolute top-20  w-4/6 h-[400px] z-50 " ></Skeleton>}
                 <Swiper
                   spaceBetween={30}
                   centeredSlides={true}
@@ -44,8 +30,8 @@ function Home(props) {
                   modules={[Autoplay, Pagination, Navigation]}
                   className="mySwiper"
                 >
-                  {dataBaner &&
-                    dataBaner.map((i) => {
+                  {dataFetch &&
+                    dataFetch.map((i) => {
                       return (
                         <SwiperSlide key={i.id}>
                           <Banner
@@ -68,7 +54,7 @@ function Home(props) {
               </div>
             </div>
           </div>
-
+            
           <div className=" bg-light pl-3 w-1/3 dark:border-active dark:text-fontactive max-lg:hidden dark:bg-main-dark-bg">
             <ContentSideBar>content</ContentSideBar>
           </div>

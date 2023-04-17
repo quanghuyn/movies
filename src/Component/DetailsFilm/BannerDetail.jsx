@@ -2,6 +2,8 @@ import React, { useContext } from "react";
 import imblogo from "../../Data/IMDb.png";
 import Actor from "./Actor";
 import {useStateContext} from "../../Contexts/ContextProvider"
+import { LazyLoadImage } from "react-lazy-load-image-component";
+
 function BannerDetail(props) {
   const calcTime = (time) => {
     const str = time / 60;
@@ -43,7 +45,7 @@ function BannerDetail(props) {
 
         <div className="  bottom-0 absolute bg-gradient-to-t h-1/2 w-full from-tobg via-viabg to-frombg z-10 "></div>
         <img
-          className="w-screen contrast-125"
+          className="w-screen contrast-125 "
           src={`https://image.tmdb.org/t/p/original${props.bg}`}
           alt=""
         />

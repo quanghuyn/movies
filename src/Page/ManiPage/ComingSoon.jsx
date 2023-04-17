@@ -1,44 +1,24 @@
 import React, { useEffect, useRef, useState } from "react";
+import {useFetch} from "../../Hooks/useFetch"
 import {
   MoviesCardComingSoon,
   MoviesCardHome,
   DetailsLoad,
   MoviesCardSideBar,
+  Spinner
 } from "../../Component";
-
+import {LeftButton,RightButton} from "../../Data/Icon"
 //libary
 import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-
-import { fetcher } from "../../config";
-import useSWR from "swr";
-
-const apiComingSoon =
-  "https://api.themoviedb.org/3/movie/upcoming?api_key=dc53e961c475e293222eece8d1187ddb&language=en-US&page=1";
-const apiComingYear =
-  "https://api.themoviedb.org/3/movie/upcoming?api_key=dc53e961c475e293222eece8d1187ddb&language=en-US&page=2";
 
 function Trending(props) {
+  const {dataFetch,isLoading,error} = useFetch('upcoming')
+  const {dataFetch:dataOnYear} = useFetch('upcoming',2)
   const swiperRef = useRef();
   const swiperSecondRef = useRef();
-
-  const [dataComing, setDataComing] = useState([]);
-  const [dataOnYear, setDataOnYear] = useState([]);
-  const { data, error } = useSWR(apiComingSoon, fetcher);
-  const { data: comingYear,isLoading, error: errorComing } = useSWR(
-    apiComingYear,
-    fetcher
-  );
   error ? (window.location = "/error") : null;
-  errorComing ? (window.location = "/error") : null;
-  useEffect(() => {
-    data && setDataComing(data.results);
-    comingYear && setDataOnYear(comingYear.results);
-  }, [data, comingYear]);
 
   return (
-    // <div className=' absolute  right-1 w-5/6 pt-20 h-fit bg-main-dark-bg ml-8 ' >
-    //     <div className='ml-8'>
     <div className=" max-lg:left-0  absolute right-0 h-fit max-lg:w-full w-5/6  select-none">
       <div className="dark:bg-main-dark-bg   lg:-ml-1 lg:pl-6  pb-10 ">
         {isLoading ? <DetailsLoad></DetailsLoad> : null}
@@ -51,40 +31,14 @@ function Trending(props) {
               className="  rounded-full w-10 h-10 bg-fontnormal  bg-opacity-25  hover:bg-fontnormal transition-colors "
               onClick={() => swiperRef.current?.slidePrev()}
             >
-              <svg
-                className=" cursor-pointer w-8 h-8 mx-auto -translate-x-1 "
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth="1.5"
-                stroke="#F9F9F9"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M15.75 19.5L8.25 12l7.5-7.5"
-                />
-              </svg>
+              <LeftButton  className=" cursor-pointer w-8 h-8 mx-auto -translate-x-1 " />
             </button>
 
             <button
               className="  rounded-full w-10 h-10 bg-fontnormal bg-opacity-70  hover:bg-fontnormal transition-colors"
               onClick={() => swiperRef.current?.slideNext()}
             >
-              <svg
-                className=" cursor-pointer text-fontactive w-8 h-8 mx-auto translate-x-1"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth="1.5"
-                stroke="#F9F9F9"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M8.25 4.5l7.5 7.5-7.5 7.5"
-                />
-              </svg>
+              <RightButton className=" cursor-pointer text-fontactive w-8 h-8 mx-auto translate-x-1" />
             </button>
           </div>
 
@@ -96,8 +50,8 @@ function Trending(props) {
               swiperRef.current = swiper;
             }}
           >
-            {dataComing ? (
-              dataComing.map((i) => {
+            {dataFetch ? (
+              dataFetch.map((i) => {
                 return (
                   <SwiperSlide key={i.id}>
                     <MoviesCardComingSoon
@@ -124,40 +78,18 @@ function Trending(props) {
               className="  rounded-full w-10 h-10 bg-fontnormal  bg-opacity-25  hover:bg-fontnormal transition-colors "
               onClick={() => swiperSecondRef.current?.slidePrev()}
             >
-              <svg
-                className=" cursor-pointer w-8 h-8 mx-auto -translate-x-1 "
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth="1.5"
-                stroke="#F9F9F9"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M15.75 19.5L8.25 12l7.5-7.5"
-                />
-              </svg>
+                
+                 <LeftButton  className=" cursor-pointer w-8 h-8 mx-auto -translate-x-1 "/>
+
             </button>
 
             <button
               className="  rounded-full w-10 h-10 bg-fontnormal bg-opacity-70  hover:bg-fontnormal transition-colors"
               onClick={() => swiperSecondRef.current?.slideNext()}
             >
-              <svg
-                className=" cursor-pointer text-fontactive w-8 h-8 mx-auto translate-x-1"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth="1.5"
-                stroke="#F9F9F9"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M8.25 4.5l7.5 7.5-7.5 7.5"
-                />
-              </svg>
+                
+                <RightButton className=" cursor-pointer text-fontactive w-8 h-8 mx-auto translate-x-1"/>
+              
             </button>
           </div>
           <Swiper

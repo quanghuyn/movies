@@ -2,11 +2,10 @@ import React, { useEffect, useRef, useState } from "react";
 import MoviesCardHome from "../CardMovies/MoviesCardHome";
 import { Swiper, SwiperSlide } from "swiper/react";
 import useSWR from "swr";
-import "swiper/css";
-import "swiper/css/navigation";
 import { fetcher } from "../../config";
 import Spinner from "../Load/Spinner";
 import { Navigation } from "swiper";
+import { RightButton, LeftButton } from "../../Data/Icon";
 
 const apiTrending =
   "https://api.themoviedb.org/3/trending/all/day?api_key=dc53e961c475e293222eece8d1187ddb";
@@ -32,39 +31,13 @@ function CountinueWatch(props) {
             className=" w-6 h-6 mt-3 mr-3 p-0.5 bg-fontnormal  rounded-md bg-opacity-25  hover:bg-fontnormal transition-colors "
             onClick={() => swiperRef.current?.slidePrev()}
           >
-            <svg
-              className=" cursor-pointer pb-1 pr-1 w-6 h-6 "
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth="1.5"
-              stroke="#F9F9F9"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M15.75 19.5L8.25 12l7.5-7.5"
-              />
-            </svg>
+            <LeftButton className=" cursor-pointer text-fontactive w-6 h-6  pb-1 pr-1 " />
           </button>
           <button
             className=" w-6 h-6 mt-3 mr-3 p-0.5 bg-fontnormal bg-opacity-25  rounded-md  hover:bg-fontnormal transition-colors"
             onClick={() => swiperRef.current?.slideNext()}
           >
-            <svg
-              className=" cursor-pointer text-fontactive w-6 h-6  pb-1 pr-1 "
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth="1.5"
-              stroke="#F9F9F9"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M8.25 4.5l7.5 7.5-7.5 7.5"
-              />
-            </svg>
+            <RightButton className=" cursor-pointer pb-1 pr-1 w-6 h-6 " />
           </button>
         </div>
       </div>

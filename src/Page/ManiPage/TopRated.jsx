@@ -1,23 +1,13 @@
-import React, { useEffect, useRef, useState } from "react";
-import useSWR from "swr";
-import { fetcher } from "../../config";
+import React, { useEffect, useState } from "react";
 import { Spinner, MoviesCard } from "../../Component";
 import scrollTo from "gatsby-plugin-smoothscroll";
+import {useFetch} from "../../Hooks/useFetch"
 
 function TopRated(props) {
   const Page = new Array(10).fill(null);
-  const pageRef = useRef(null);
   const [page, setPage] = useState(1);
-  const api = `https://api.themoviedb.org/3/movie/top_rated?api_key=dc53e961c475e293222eece8d1187ddb&language=en-US&page=${page}`;
-  const { data, error, isLoading } = useSWR(api, fetcher);
-  const [dataTopRated, setDataTopRate] = useState([]);
+  const {dataFetch,isLoading,error} = useFetch('top_rated',page)
   error ? (window.location = "/error") : null;
-
-  useEffect(() => {
-    data && setDataTopRate(() => data.results);
-  }, [data, page]);
-
-  // get api for num page
   const handlPage = (e) => {
     setPage(e.target.textContent);
   };
@@ -30,8 +20,8 @@ function TopRated(props) {
           {isLoading ? (
             <Spinner></Spinner>
           ) : (
-            dataTopRated &&
-            dataTopRated.map((item) => {
+            dataFetch &&
+            dataFetch.map((item) => {
               return (
                 <MoviesCard
                   key={item.id}

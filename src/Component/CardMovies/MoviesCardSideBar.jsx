@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import {Poster} from "../../config"
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 function MoviesCardSideBar(props) {
   return (
@@ -8,7 +9,7 @@ function MoviesCardSideBar(props) {
       <div className="rounded-lg w-[370px] h-[170px]  px-3  flex flex-row ">
         <div className=" ">
           <div className="  absolute z-10 bg-gradient-to-r  w-[112px] h-[140px] from-cardmovies  to-cardmoviesto  "></div>
-          <img
+          <LazyLoadImage
             className=" cursor-pointer shadow-lg w-[112px] h-[140px] rounded-xl  border border-fontnormal border-opacity-20   object-center "
             src={`${Poster}${props.bg}`}
             alt=""

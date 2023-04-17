@@ -4,6 +4,9 @@ import useSWR from "swr";
 
 import {Poster} from "../../config"
 
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import { Link } from "react-router-dom";
+
 
 function MoviCardResSize(props) {
   const ref = useRef(null);
@@ -11,13 +14,12 @@ function MoviCardResSize(props) {
     ref.current.scrollLeft += scrollOffset;
   }
 
-  const apiPopular = 'https://api.themoviedb.org/3/movie/popular?api_key=dc53e961c475e293222eece8d1187ddb&language=en-US&page=1'
+  const apiPopular = 'https://api.themoviedb.org/3/movie/popular?api_key=dc53e961c475e293222eece8d1187ddb&language=en-US&page=2'
   const { data } = useSWR(apiPopular, fetcher);
   const [dataPop, setDataPop] = useState([]);
   useEffect(()=>{
     data && setDataPop(()=> data.results)
   },[data])
-  console.log(dataPop);
   return (
     <div className="dark:bg-main-dark-bg relative scr ml-4">
         <button className="icon_right" onClick={() => scroll(370)}>
@@ -55,19 +57,16 @@ function MoviCardResSize(props) {
       <div className=" cards scrollbar relative" ref={ref}>
 
         {data && dataPop.map(i=>{return(
-            <a key={i.id} className=" card" href="">
-          <img
+            <Link key={i.id} className=" card" to={`/movies/${i.id}`} >
+          <LazyLoadImage
             className="poster"
             src={`${Poster}${i.poster_path}`}
             alt=""
           />
-
           <div className="rest_card">
-            {/* <video src="https://youtu.be/vVgMqtCW_Dw"></video> */}
-            <img
+            <LazyLoadImage
               className=""
               src={`${Poster}${i.backdrop_path}`}
-
               alt=""
             />
             <div className="cont">
@@ -75,7 +74,7 @@ function MoviCardResSize(props) {
               <p className="pl-2">{i.release_date}</p>
             </div>
           </div>
-            </a>
+            </Link>
         )})}
       </div>
     </div>

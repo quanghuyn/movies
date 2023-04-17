@@ -2,6 +2,9 @@ import React from "react";
 import { BsFillPlayFill, BsHeart } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { Poster, Backdrop } from "../../config";
+
+import { LazyLoadImage } from "react-lazy-load-image-component";
+
 function Banner(props) {
   return (
     <div className=" text-fontactive dark:bg-main-dark-bg h-full pt-16 ">
@@ -11,15 +14,15 @@ function Banner(props) {
             to={`/movies/${props.id}`}
             className="flex mx-auto  w-full h-full   contrast-125 "
           >
-            <div className="  absolute  bg-gradient-to-r h-full w-1/3 dark:from-tobg via-viabg to-frombg  "></div>
             {/* img desktop */}
+            <div className="  absolute  bg-gradient-to-r h-full w-1/3 dark:from-tobg via-viabg to-frombg  "></div>
             <img
               className=" max-lg:hidden  w-full object-cover h-full   bg-gradient-to-r from-fontnormal dark:to-title "
               src={`${Backdrop}${props.bg}`}
               alt=""
             />
 
-            <img
+            <LazyLoadImage
               className="  w-full h-full bg-no-repeat object-cover  lg:hidden "
               src={`${Poster}${props.bgSecond}`}
               alt=""

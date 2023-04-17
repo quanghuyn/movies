@@ -4,6 +4,7 @@ module.exports = {
   darkMode: "class",
   theme: {
     colors: {
+      "dark-lighten": "#333335",
       textlight : '#171725',
       light : '#FEFDFF',
       fontnormal: "#78828A",

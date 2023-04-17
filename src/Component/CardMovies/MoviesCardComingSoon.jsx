@@ -2,6 +2,7 @@ import React from "react";
 import { formatDate } from "../../config";
 import { Link } from "react-router-dom";
 import {Poster} from "../../config"
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 function MoviesCardComingSoon(props) {
   return (

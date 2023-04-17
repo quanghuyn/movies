@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import logo from "../Data/logo.png";
 const data = [
   {
@@ -205,6 +206,8 @@ function Navbar(props) {
           </div>
         </div>
       </div>
+      <Outlet />
+
     </div>
   );
 }

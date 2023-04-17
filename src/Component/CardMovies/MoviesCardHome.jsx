@@ -2,6 +2,7 @@ import React from "react";
 import imblogo from "../../Data/IMDb.png";
 import { Link } from "react-router-dom";
 import {Poster} from "../../config"
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 function MoviesCardHome(props) {
   const formatDate = (dateStr) => {
@@ -16,7 +17,7 @@ function MoviesCardHome(props) {
       className=" ease-in-out hover:duration-300 hover:scale-110 flex flex-col rounded-lg dark:bg-movies bg-sc-bglight dark:text-fontactive h-[460px]  mt-4   "
     >
       <div className="   w-[320px] h-[300px] absolute z-10 bg-gradient-to-r  from-cardmovies  to-cardmoviesto  "></div>
-      <img
+      <LazyLoadImage
         src={`${Poster}${props.bg}`}
         alt=""
         className="w-full h-[300px] object-center  rounded-t-lg mb-5  contrast-125"
@@ -33,7 +34,7 @@ function MoviesCardHome(props) {
           </span>
 
           <span className=" flex">
-            <img
+            <LazyLoadImage
               className="object-cover w-12 mr-1  -pt-2"
               src={imblogo}
               alt=""
