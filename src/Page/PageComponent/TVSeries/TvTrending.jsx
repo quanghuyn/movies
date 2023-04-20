@@ -1,18 +1,12 @@
 import React, { useRef } from "react";
 import { LeftButton, RightButton } from "../../../Data/Icon";
 import { SwiperSlide, Swiper } from "swiper/react";
-import { useFetch } from "../../../Hooks/useFetch";
-import {
-  BannerMoviesPage,
-  DetailsLoad,
-  MoviesCardHome,
-  Skeleton,
-  Spinner,
-} from "../../../Component";
+import { useFetchTV } from "../../../Hooks/useFetch";
+import { MoviesCardHome, Skeleton } from "../../../Component";
 import { Autoplay, Pagination, Navigation } from "swiper";
 
-function MoviesTrending(props) {
-  const { dataFetch, isLoading, error } = useFetch("now_playing");
+function TvTrending(props) {
+  const { dataFetch, isLoading, error } = useFetchTV("on_the_air");
   const swiperRef = useRef();
 
   return (
@@ -32,6 +26,17 @@ function MoviesTrending(props) {
             <LeftButton className="w-6 h-6" />
           </button>
         </div>
+        <div className="flex flex-row gap-5">
+          {isLoading &&
+            new Array(5).fill(".").map((i) => {
+              return (
+                <Skeleton className="w-[350px] h-[370px] z-50 "></Skeleton>
+              );
+            })}
+        </div>
+        <div className="flex flex-row gap-5">
+        {isLoading &&  new Array(5).fill('.').map((i,ix)=> { return  <Skeleton key={ix} className='w-[350px] h-[370px] z-50 ' ></Skeleton>}) }
+        </div>
         <Swiper
           grabCursor={"true"}
           spaceBetween={20}
@@ -40,27 +45,24 @@ function MoviesTrending(props) {
             swiperRef.current = swiper;
           }}
         >
-          {dataFetch ? (
+          {dataFetch &&
             dataFetch.map((i) => {
               return (
                 <SwiperSlide key={i.id}>
                   <MoviesCardHome
-                    title={i.title}
+                    title={i.original_name}
                     bg={i.poster_path}
                     id={i.id}
-                    releasedate={i.release_date}
+                    releasedate={i.first_air_date}
                     voteaverage={i.vote_average}
                   ></MoviesCardHome>
                 </SwiperSlide>
               );
-            })
-          ) : (
-            <Skeleton className="w-full h-[350px]"></Skeleton>
-          )}
+            })}
         </Swiper>
       </div>
     </div>
   );
 }
 
-export default MoviesTrending;
+export default TvTrending;

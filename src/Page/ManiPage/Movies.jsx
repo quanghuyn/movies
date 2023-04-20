@@ -1,22 +1,17 @@
-import React, { useRef } from "react";
+import React from "react";
 //component
-import { MoviCardResSize } from "../../Component";
-
 import BannerMovies from "../PageComponent/Movies/BannerMovies";
 import MoviesTrending from "../PageComponent/Movies/MoviesTrending";
 import MoviesPopular from "../PageComponent/Movies/MoviesPopular";
+import CardResSize from "../PageComponent/Movies/CardResize";
 
 function Movies(props) {
   return (
     <div className="dark:bg-main-dark-bg w-full min-h-screen h-full">
       <BannerMovies></BannerMovies>
-
-   
-
       <div className="relative mb-16 mt-12 ">
-        <MoviCardResSize></MoviCardResSize>
+        <CardResSize></CardResSize>
       </div>
-
       <h3 className="dark:text-fontactive text-2xl mb-6 ml-9 uppercase ">
         Trending
       </h3>

@@ -9,8 +9,8 @@ const data = [
     to: "movies",
   },
   {
-    name: "Series",
-    to: "series",
+    name: "TV",
+    to: "tvseries",
   },
   {
     name: "Animation",

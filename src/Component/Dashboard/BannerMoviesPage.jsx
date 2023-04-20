@@ -14,7 +14,7 @@ function BannerMoviesPage(props) {
             <div className="  absolute  bg-gradient-to-r h-full w-1/3 from-tobg via-viabg to-frombg  "></div>
             {/* img desktop */}
             <LazyLoadImage
-              className=" max-lg:hidden  w-full object-center h-full   bg-gradient-to-r from-fontnormal to-title "
+              className=" max-lg:hidden  w-full object-center h-full "
               src={`${Backdrop}${props.bg}`}
               alt=""
             />

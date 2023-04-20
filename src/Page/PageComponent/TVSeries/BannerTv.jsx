@@ -1,17 +1,16 @@
 import React, { useRef } from 'react';
 import { LeftButton, RightButton } from '../../../Data/Icon';
 import { SwiperSlide,Swiper } from 'swiper/react';
-import { useFetch } from '../../../Hooks/useFetch';
-import { BannerMoviesPage, Skeleton } from '../../../Component';
+import { useFetchTV } from '../../../Hooks/useFetch';
+import { BannerMoviesPage, DetailsLoad, Skeleton } from '../../../Component';
 import { Autoplay, Pagination, Navigation } from "swiper";
 
-function BannerMovies(props) {
-    const {dataFetch:dataBaner,isLoading,error} =  useFetch('now_playing')
-    console.log(dataBaner,isLoading,error);
+function BannerTV(props) {
+    const {dataFetch:dataBaner,isLoading,error} =  useFetchTV('popular')
     const swiperRef = useRef();
     return (
         <>
-             <div className="relative">
+             <div className="relative mt-16 mb-16 ">
         <div className="absolute top-1/2 -translate-y-1/2  flex justify-between w-full z-40 px-0.5 ">
           <button
             className="  rounded-r-2xl w-7 h-64 bg-fontnormal  bg-opacity-10  hover:bg-fontnormal hover:bg-opacity-40 transition-colors "
@@ -59,4 +58,4 @@ function BannerMovies(props) {
     );
 }
 
-export default BannerMovies;
+export default BannerTV;
