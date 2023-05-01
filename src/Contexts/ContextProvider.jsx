@@ -3,7 +3,7 @@ import { createContext, useContext, useState } from "react";
 export const SetContext = createContext();
 
   export const ContextProvider = ({children}) => {
-  const [active, setActive] = useState(false);
+  const [key, setkey] = useState('');
   const [openTrailer,setOpenTrailer] = useState(false)
   const [mode,setMode] = useState('dark')
 
@@ -15,7 +15,7 @@ export const SetContext = createContext();
     setOpenTrailer(!openTrailer)
   }
 
-  const value = { hanldClose ,openTrailer,toggleDarklMode,mode};
+  const value = { hanldClose ,openTrailer,toggleDarklMode,mode,key,setkey};
   return (<SetContext.Provider value={value}>{children}</SetContext.Provider>);
 };
 

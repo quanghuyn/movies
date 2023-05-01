@@ -3,7 +3,7 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import { Link } from "react-router-dom";
 import {Poster} from "../../config"
 import imblogo from "../../Data/IMDb.png";
-function MoviesCardDiscover(props) {
+function MoviesCard(props) {
   const formatDate = (dateStr) => {
     const [year, month, day] = dateStr?.split("-");
     let newDate = `${day}-${month}-${year}`;
@@ -12,13 +12,13 @@ function MoviesCardDiscover(props) {
   return (
     <Link
       to={`/movies/${props.id}`}
-      className=" ease-in-out hover:duration-300 hover:scale-110 flex flex-col rounded-lg dark:bg-movies bg-bg dark:text-fontactive max-sm:h-[560px] h-[460px]  "
+      className=" w-[270px]  flex flex-col rounded-lg dark:bg-movies bg-bg dark:text-fontactive max-sm:h-[560px] h-[460px]  "
     >
-      <div className=" w-[320px] h-[330px] absolute z-10 bg-gradient-to-r  dark:from-cardmovies  to-cardmoviesto  "></div>
+      <div className=" w-[220px] h-[230px] absolute z-10 bg-gradient-to-r  dark:from-cardmovies  to-cardmoviesto  "></div>
       <LazyLoadImage
         src={`${Poster}${props.bg}`}
         alt=""
-        className="w-full max-sm:h-[400px] h-[330px] object-fill max-sm:object-top  rounded-t-lg mb-5"
+        className="w-[270px] max-sm:h-[200px] h-[330px] object-fill max-sm:object-top  rounded-t-lg mb-5"
       />
 
       <div className="flex flex-col flex-1 pl-4">
@@ -45,4 +45,4 @@ function MoviesCardDiscover(props) {
   );
 }
 
-export default MoviesCardDiscover;
+export default MoviesCard;

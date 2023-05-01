@@ -9,7 +9,7 @@ function Banner(props) {
   return (
     <div className=" text-fontactive dark:bg-main-dark-bg h-full pt-16 ">
       <div className=" mt-6 mb-7">
-        <div className="relative   w-full h-[400px] flex flex-col">
+        <div className="relative  w-full h-[400px] flex flex-col">
           <Link
             to={`/movies/${props.id}`}
             className="flex mx-auto  w-full h-full   contrast-125 "
@@ -22,7 +22,7 @@ function Banner(props) {
               alt=""
             />
 
-            <LazyLoadImage
+            <img
               className="  w-full h-full bg-no-repeat object-cover  lg:hidden "
               src={`${Poster}${props.bgSecond}`}
               alt=""

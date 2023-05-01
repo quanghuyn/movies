@@ -1,0 +1,95 @@
+import React, { useEffect, useState } from "react";
+import { useFetch } from "../../Hooks/useFetch";
+import { MoviesCardDiscover } from "../../Component";
+import SideBar from "../../Component/DiscoverySideBar/SideBar";
+import { useSearchParams } from "react-router-dom";
+import { apiSearch, fetcher, fetcherConfig, getExploreMovie } from "../../config";
+import { useQuery } from "@tanstack/react-query";
+import scrollTo from "gatsby-plugin-smoothscroll";
+import useSWR from "swr";
+import { useStateContext } from "../../Contexts/ContextProvider";
+function Disover(props) {
+  const {key} =useStateContext()
+  const numPage = new Array(10).fill(null);
+  const [config, setConfig] = useState({ with_genres: "" });
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [page, setPage] = useState(1);
+  const apiKey = `https://api.themoviedb.org/3/search/movie?api_key=dc53e961c475e293222eece8d1187ddb&language=en-US&query=${key}&page=${page}&include_adult=false`
+  const { data, error } = useQuery(
+    ["explore-result-movie", page, config],
+    getExploreMovie(config)
+  );
+
+  const {data:dataSearch} = useSWR(apiKey,fetcher)
+  const dataRender = dataSearch?.results == '' ?  data?.results : dataSearch?.results 
+  console.log(dataRender);
+  useEffect(() => {
+    const changeConfig = (key, value) => {
+      setConfig((pre) => ({
+        ...pre,
+        [key]: value,
+      }));
+    };
+    const genreType = searchParams.getAll("genre") || [];
+    changeConfig("with_genres", genreType.toString());
+
+    const minRuntime = Number(searchParams.get("minRuntime")) || 0;
+    const maxRuntime = Number(searchParams.get("maxRuntime")) || 200;
+    changeConfig("with_runtime.gte", minRuntime);
+    changeConfig("with_runtime.lte", maxRuntime);
+    const releaseFrom = searchParams.get("from") || "2002-11-04";
+    const releaseTo = searchParams.get("to") || "2023-07-28";
+    changeConfig("primary_release_date.gte", releaseFrom);
+    changeConfig("primary_release_date.lte", releaseTo);
+  }, [window.location.search]);
+
+  function handlPage(e) {
+    setPage(e.target.textContent);
+  }
+
+  return (
+    <div className=" dark:bg-main-dark-bg flex flex-row  w-full h-[3500px]">
+      <div className=" w-7/12  absolute left-1/4 -translate-x-[117px] dark:bg-main-dark-bg  top-16 pl-6 mt-6  ">
+        <h3 className="dark:text-fontactive text-2xl pr-4 "></h3>
+        <div className=" grid grid-cols-3 gap-5 hover:transition-none">
+          {data &&
+            dataRender?.map((item, ix) => {
+              if (item === undefined) {
+                return;
+              } else {
+                return (
+                  <MoviesCardDiscover
+                    key={item.id}
+                    bg={item.poster_path}
+                    title={item.title}
+                    id={item.id}
+                  ></MoviesCardDiscover>
+                );
+              }
+            })}
+        </div>
+        {/* Page */}
+        <div className=" text-link absolute -bottom-16 flex flex-row gap-7 justify-center mx-auto  h-8 w-full mb-2 ml-20 ">
+          {numPage.map((i, index) => {
+            return (
+              <span
+                key={index}
+                onClick={(e) => {
+                  scrollTo("#root");
+                  return handlPage(e);
+                }}
+                className=" transition-all hover:duration-700 ease-in-out  hover:scale-110 cursor-pointer bg-title bg-opacity-5  text-xl px-2 py-0.5 rounded-sm"
+              >
+                {index + 1}
+              </span>
+            );
+          })}
+        </div>
+      </div>
+      {/* content side bar */}
+      <SideBar></SideBar>
+    </div>
+  );
+}
+
+export default Disover;

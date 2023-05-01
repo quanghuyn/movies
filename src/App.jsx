@@ -13,6 +13,7 @@ const ComingSoon = React.lazy(() => import("./Page/ManiPage/ComingSoon"));
 // const PageError = React.lazy(() => import("./Page/PageError"));
 const Movies = React.lazy(() => import("./Page/ManiPage/Movies"));
 const TvSeries = React.lazy(() => import("./Page/ManiPage/TvSeries"));
+const Disover = React.lazy(() => import("./Page/ManiPage/Disover"));
 
 function App(props) {
   const { mode } = useStateContext();
@@ -39,6 +40,14 @@ function App(props) {
               </React.Suspense>
             }
           ></Route>
+          <Route
+            path="/discovery"
+            element={
+              <React.Suspense fallback={<>...</>}>
+                <Disover />
+              </React.Suspense>
+            }
+          ></Route>
         </Route>
         <Route
           path="/movies"
@@ -48,12 +57,22 @@ function App(props) {
             </React.Suspense>
           }
         ></Route>
-        <Route path="/movies/:moviesId" element={<React.Suspense fallback={<>...</>}>
+        <Route
+          path="/movies/:moviesId"
+          element={
+            <React.Suspense fallback={<>...</>}>
               <DetailMovies />
-            </React.Suspense>}></Route>
-        <Route path="/tvseries" element={<React.Suspense fallback={<>...</>}>
+            </React.Suspense>
+          }
+        ></Route>
+        <Route
+          path="/tvseries"
+          element={
+            <React.Suspense fallback={<>...</>}>
               <TvSeries />
-            </React.Suspense>}></Route>
+            </React.Suspense>
+          }
+        ></Route>
         <Route path="/error" element={<PageError />}></Route>
         <Route path="*" element={<PageError />}></Route>
       </Routes>

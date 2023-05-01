@@ -67,9 +67,33 @@ body {
 @tailwind components;
 @tailwind utilities;
 @layer utilities {
+  /* custom scrollbar */
+  ::-webkit-scrollbar {
+    @apply w-[10px];
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-main-dark-bg;
+  }
+  
+  ::-webkit-scrollbar-button {
+    @apply hidden;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-[#121212] rounded-full hover:bg-[#0e0d0d] transition duration-300;
+  }
   .scrollbar::-webkit-scrollbar {
     display: none;
   }
+  .scrollGenres::-webkit-scrollbar-track{
+    background-color: #171725;
+    margin-right: 40px;
+  }
+  .tw-slider-range::-webkit-slider-thumb {
+    @apply appearance-none h-5 w-5 rounded-full bg-link  pointer-events-auto;
+  }
+
   .yt {
     z-index: 999999;
   }

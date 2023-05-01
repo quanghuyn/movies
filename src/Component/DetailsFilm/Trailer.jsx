@@ -17,7 +17,7 @@ function Trailer(props) {
 
   return (
     <div>
-      <div  ref={ref} onClick={()=> hanldClose()}  className={`bg-main-dark-bg w-full min-h-screen h-[700px] z-40 absolute top-0 bg-opacity-60 ${openTrailer ? null:'hidden'}`}>
+      <div  ref={ref} onClick={()=> hanldClose()}  className={`bg-main-dark-bg w-full min-h-screen h-[700px] z-40 absolute top-16 bg-opacity-60 ${openTrailer ? null:'hidden'}`}>
           <div onClick={()=> hanldClose()}
           className=" p-1 cursor-pointer absolute top-20 z-50 bg-tobg rounded-full bg-opacity-40 right-20 hover:bg-main-dark-bg ">
             <svg

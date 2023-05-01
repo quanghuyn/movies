@@ -86,8 +86,8 @@ function Navbar(props) {
         </button>
       </div>
 
-      <div className="flex items-center ml-12  w-2/12 max-lg:hidden ">
-        <span className="mr-16 relative  max-lg:hidden">
+      <div className="flex items-center ml-24  w-2/12 max-lg:hidden ">
+        {/* <span className="mr-16 relative  max-lg:hidden">
           <div className=" flex bg-fontnormal h-2 w-4 absolute top-0 right-0 bottom-auto left-auto z-10 translate-x-2/4 -translate-y-1/2 rotate-0 skew-x-0 skew-y-0 scale-x-100 scale-y-100 rounded-full  p-2.5 text-xs">
             <span className="absolute  top-2/4 right-2/4 bottom-auto left-auto z-20 inline-block translate-x-1/2 -translate-y-1/2 ">
               10
@@ -114,7 +114,7 @@ function Navbar(props) {
               fill="#F9F9F9"
             />
           </svg>
-        </span>
+        </span> */}
 
         <img
           src="https://tecdn.b-cdn.net/img/new/avatars/2.webp"

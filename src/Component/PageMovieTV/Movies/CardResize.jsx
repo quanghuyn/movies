@@ -17,12 +17,6 @@ function CardResSize(props) {
   }
   const { dataFetch:dataPop, isLoading, error } = useFetch("popular",2);
 
-//   const apiPopular = 'https://api.themoviedb.org/3/movie/popular?api_key=dc53e961c475e293222eece8d1187ddb&language=en-US&page=2'
-//   const { data } = useSWR(apiPopular, fetcher);
-//   const [dataPop, setDataPop] = useState([]);
-//   useEffect(()=>{
-//     data && setDataPop(()=> data.results)
-//   },[data])
   return (
     <div className="dark:bg-main-dark-bg relative scr ml-4">
         <button className="icon_right" onClick={() => scroll(370)}>

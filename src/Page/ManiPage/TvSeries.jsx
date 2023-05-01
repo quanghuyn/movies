@@ -1,13 +1,11 @@
 import React from "react";
-import BannerTV from "../PageComponent/TVSeries/BannerTv";
-import TvTrending from "../PageComponent/TVSeries/TvTrending";
-import TvPopular from "../PageComponent/TVSeries/TvPopular";
-import TvCardResSize from "../PageComponent/TVSeries/TvCardResSize";
+
+import {BannerTv,TvTrending,TvPopular,TvCardResSize} from "../../Component/"
 
 function TvSeries(props) {
   return (
     <div className="dark:bg-main-dark-bg w-full min-h-screen h-full">
-      <BannerTV></BannerTV>
+      <BannerTv></BannerTv>
       <TvCardResSize></TvCardResSize>
       <h3 className="dark:text-fontactive text-2xl mb-6 ml-9 uppercase ">
         Trending

@@ -1,32 +1,31 @@
-import React, { useRef } from 'react';
-import { LeftButton, RightButton } from '../../../Data/Icon';
-import { SwiperSlide,Swiper } from 'swiper/react';
-import { useFetchTV } from '../../../Hooks/useFetch';
-import { BannerMoviesPage, DetailsLoad, Skeleton } from '../../../Component';
+import React, { useRef } from "react";
+import { LeftButton, RightButton } from "../../../Data/Icon";
+import { SwiperSlide, Swiper } from "swiper/react";
+import { useFetchTV } from "../../../Hooks/useFetch";
+import { BannerMoviesPage, DetailsLoad, Skeleton } from "../..";
 import { Autoplay, Pagination, Navigation } from "swiper";
 
-function BannerTV(props) {
-    const {dataFetch:dataBaner,isLoading,error} =  useFetchTV('popular')
-    const swiperRef = useRef();
-    return (
-        <>
-             <div className="relative mt-16 mb-16 ">
+function BannerTv(props) {
+  const { dataFetch: dataBaner, isLoading, error } = useFetchTV("popular");
+  const swiperRef = useRef();
+  return (
+    <>
+      <div className="relative mt-16 mb-16 ">
         <div className="absolute top-1/2 -translate-y-1/2  flex justify-between w-full z-40 px-0.5 ">
           <button
             className="  rounded-r-2xl w-7 h-64 bg-fontnormal  bg-opacity-10  hover:bg-fontnormal hover:bg-opacity-40 transition-colors "
             onClick={() => swiperRef.current?.slidePrev()}
           >
-          <LeftButton className=" cursor-pointer w-8 h-8 mx-auto -translate-x-1 " />
-            
+            <LeftButton className=" cursor-pointer w-8 h-8 mx-auto -translate-x-1 " />
           </button>
           <button
             className="  rounded-l-2xl  w-7 h-64 bg-fontnormal bg-opacity-10 hover:bg-opacity-40 hover:bg-fontnormal transition-colors"
             onClick={() => swiperRef.current?.slideNext()}
           >
-            <RightButton  className=" cursor-pointer text-fontactive w-8 h-8 mx-auto -translate-x-0.5" />
+            <RightButton className=" cursor-pointer text-fontactive w-8 h-8 mx-auto -translate-x-0.5" />
           </button>
         </div>
-        {isLoading && <Skeleton className='w-full h-[500px] z-50 ' ></Skeleton>}
+        {isLoading && <Skeleton className="w-full h-[500px] z-50 "></Skeleton>}
         <Swiper
           spaceBetween={30}
           centeredSlides={true}
@@ -40,7 +39,7 @@ function BannerTV(props) {
         >
           {dataBaner &&
             dataBaner.map((i) => {
-              return ( 
+              return (
                 <SwiperSlide key={i.id}>
                   <BannerMoviesPage
                     bg={i.backdrop_path}
@@ -54,8 +53,8 @@ function BannerTV(props) {
             })}
         </Swiper>
       </div>
-        </>
-    );
+    </>
+  );
 }
 
-export default BannerTV;
+export default BannerTv;

@@ -10,7 +10,7 @@ import {
 } from "../../../Component";
 import { Autoplay, Pagination, Navigation } from "swiper";
 
-function MoviesTrending(props) {
+function MoviesPopular(props) {
   const { dataFetch, isLoading, error } = useFetch("popular", 3);
   const swiperRef = useRef();
 
@@ -60,4 +60,4 @@ function MoviesTrending(props) {
   );
 }
 
-export default MoviesTrending;
+export default MoviesPopular;

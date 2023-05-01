@@ -1,10 +1,6 @@
 import React from "react";
 //component
-import BannerMovies from "../PageComponent/Movies/BannerMovies";
-import MoviesTrending from "../PageComponent/Movies/MoviesTrending";
-import MoviesPopular from "../PageComponent/Movies/MoviesPopular";
-import CardResSize from "../PageComponent/Movies/CardResize";
-
+import {BannerMovies,MoviesPopular,CardResSize,MoviesTrending} from "../../Component/"
 function Movies(props) {
   return (
     <div className="dark:bg-main-dark-bg w-full min-h-screen h-full">

@@ -7,7 +7,6 @@ import { Autoplay, Pagination, Navigation } from "swiper";
 
 function BannerMovies(props) {
     const {dataFetch:dataBaner,isLoading,error} =  useFetch('now_playing')
-    console.log(dataBaner,isLoading,error);
     const swiperRef = useRef();
     return (
         <>

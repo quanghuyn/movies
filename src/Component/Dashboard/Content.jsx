@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import MoviesCard2 from "../CardMovies/MoviesCardSideBar";
-import Genres from "./Genres";
+import Genress from "./Genres";
 import { fetcher } from "../../config";
 import useSWR from "swr";
 
@@ -35,14 +35,14 @@ function ContentSideBar(props) {
                 releasedate={item.release_date}
                 voteaverage={item.vote_average}
                 lg={item.original_language}
-                id={item.id}
+
               ></MoviesCard2>
             );
           })
         }
       </div>
       {!isLoading && 
-        <Genres></Genres>
+        <Genress></Genress>
 
       }
     </div>
