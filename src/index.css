@@ -24,7 +24,9 @@ body {
     
     /* ... */
   }
-
+  .zmax{
+    z-index: 9999999;
+  }
   
   .movies-list .swiper-slide {
     width: 340px;
@@ -37,7 +39,7 @@ body {
     width: 640px;
   }
   .linkSideBar{
-    @apply flex items-center h-10 w-full mt-4 pl-7 dark:text-fontnormal font-semibold font-[Inter] cursor-pointer;
+    @apply flex items-center h-10 w-full mt-4 pl-7 dark:text-fontnormal font-body cursor-pointer;
   }
   .linkSideBarActive{
     @apply cursor-pointer  bg-gradient-to-r from-active  flex items-center h-10 w-full mt-4 pl-7 dark:text-fontactive font-semibold  border-r-2 border-active ;
@@ -53,13 +55,17 @@ body {
   }
 
   .navbar {
-    @apply dark:bg-main-dark-bg bg-bg flex  flex-row content-center  h-72  dark:text-fontactive fixed w-full top-0 z-50;
+    @apply dark:bg-main-dark-bg bg-bg flex  flex-row content-center  h-72  dark:text-fontactive fixed w-full top-0 z-40;
   }
   .navbarLocation {
-    @apply dark:bg-main-dark-bg flex flex-row content-center  h-72  dark:text-fontactive  w-full top-0  bg-opacity-40 z-50;
+    @apply dark:bg-main-dark-bg flex flex-row content-center  h-72  dark:text-fontactive  w-full top-0  bg-opacity-40 z-40;
   }
   .gradient {
     background-image: linear-gradient(135deg, #684ca0 35%, #1c4ca0 100%);
+  }
+  input:-webkit-autofill,
+  input:-webkit-autofill:focus {
+    transition: background-color 600000s 0s, color 600000s 0s;
   }
 }
 
@@ -332,6 +338,297 @@ label
 #toggle_checkbox:checked + label #moon:before
 {
     background-color: #000000;
+}
+
+/* toggle mode */
+/* .App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  padding: 10px;
+  margin: 0;
+  background-color: lightgrey;
+} */
+
+.wrapper {
+  width: 70px;
+  height: 30px;
+  border-radius: 15px;
+  /* box-shadow: inset 0 0 5px 0px rgba(0, 0, 0, 1); */
+}
+
+.switcher {
+  display: block;
+  position: relative;
+  width: 70px;
+  height: 30px;
+  border-radius: 15px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: background-color ease 0.4s;
+}
+
+.sky {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #4682b4;
+  border-radius: 15px;
+  transition: background-color ease 0.4s;
+  /* box-shadow: inset 1px 1px 4px 1px rgba(0, 0, 0, 0.5); */
+}
+
+.checkbox {
+  display: none;
+}
+
+.clouds {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  transition: bottom ease 0.4s;
+}
+
+.cloud1,
+.cloud2,
+.cloud3,
+.cloud4,
+.cloud5,
+.cloud6 {
+  position: absolute;
+  right: 23px;
+  bottom: -15px;
+  width: 20px;
+  height: 20px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+}
+.cloud4,
+.cloud5,
+.cloud6 {
+  background-color: #fff;
+}
+.cloud2 {
+  right: 4px;
+  bottom: -10px;
+  width: 25px;
+}
+.cloud3 {
+  right: -11px;
+  bottom: -3px;
+  width: 25px;
+}
+.cloud4 {
+  right: 18px;
+  bottom: -16px;
+}
+.cloud5 {
+  right: 4px;
+  bottom: -13px;
+}
+.cloud6 {
+  right: -10px;
+  bottom: -6px;
+}
+
+.toggle {
+  position: absolute;
+  top: -20px;
+  left: -18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 70px;
+  height: 70px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 50%;
+  transition: left ease 0.4s;
+}
+
+.checkbox:checked + .sky + .clouds + .toggle {
+  left: 20px;
+}
+
+.checkbox:checked + .sky + .clouds + .toggle > .toggle-inner {
+  background-color: lightgrey;
+}
+
+.checkbox:checked + .sky + .clouds + .toggle > .toggle-inner > .craters {
+  opacity: 1;
+}
+
+.checkbox:checked + .sky {
+  /* background-color: #003151; */
+  background-color: #0f1c3b;
+}
+
+.checkbox:checked + .sky + .clouds + .toggle + .stars {
+  top: 0;
+}
+
+.checkbox:checked + .sky + .clouds {
+  bottom: -100%;
+}
+
+.toggle::before,
+.toggle::after {
+  position: absolute;
+  width: 54px;
+  height: 54px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 50%;
+  content: "";
+}
+
+.toggle::after {
+  width: 38px;
+  height: 38px;
+  background-color: rgba(255, 255, 255, 0.07);
+}
+
+.toggle-inner {
+  position: relative;
+  width: 22px;
+  height: 22px;
+  background-color: gold;
+  border-radius: 50%;
+  transition: background-color ease 0.4s;
+  box-shadow: inset -1px -1px 1px 1px rgba(0, 0, 0, 0.15);
+}
+
+.craters {
+  opacity: 0;
+  transition: opacity ease 0.4s;
+}
+
+.crater1,
+.crater2,
+.crater3 {
+  position: absolute;
+  top: 7px;
+  left: 3px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background-color: rgba(153, 153, 153, 0.7);
+  box-shadow: inset 0 0 2px 0px rgba(0, 0, 0, 0.15);
+}
+
+.crater2 {
+  top: 4px;
+  left: 12px;
+  width: 5px;
+  height: 5px;
+}
+
+.crater3 {
+  top: 12px;
+  left: 14px;
+  width: 4px;
+  height: 4px;
+}
+
+.stars {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: top ease 0.4s;
+}
+
+.star-big {
+  position: absolute;
+  top: 7px;
+  left: 5px;
+  width: 3px;
+  margin: 3px auto;
+}
+
+.star-big::before,
+.star-big::after {
+  content: "";
+  position: absolute;
+  background: #fff;
+  width: 3px;
+  height: 4px;
+}
+
+.star-big::before {
+  transform: rotate(-45deg) skewX(22.5deg) skewY(22.5deg);
+}
+
+.star-big::after {
+  transform: rotate(45deg) skewX(22.5deg) skewY(22.5deg);
+}
+
+.star-small {
+  position: absolute;
+  top: 7px;
+  left: 5px;
+  width: 1px;
+}
+
+.star-small::before,
+.star-small::after {
+  content: "";
+  position: absolute;
+  background: #fff;
+  width: 1px;
+  height: 2px;
+}
+
+.star-small::before {
+  transform: rotate(-45deg) skewX(22.5deg) skewY(22.5deg);
+}
+
+.star-small::after {
+  transform: rotate(45deg) skewX(22.5deg) skewY(22.5deg);
+}
+
+.star1 {
+  top: 5px;
+  left: 8px;
+}
+.star2 {
+  top: 12px;
+  left: 25px;
+}
+.star3 {
+  top: 21px;
+  left: 36px;
+}
+.star4 {
+  top: 5px;
+  left: 18px;
+}
+.star5 {
+  top: 20px;
+  left: 14px;
+}
+.star6 {
+  top: 7px;
+  left: 30px;
+}
+
+.shadow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  box-shadow: inset 0px 0px 3px 1px rgba(0, 0, 0, 0.5);
 }
 
 }

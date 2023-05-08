@@ -3,6 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { Outlet } from "react-router-dom";
 import logo from "../Data/logo.png";
+import { useStateContext } from "../Contexts/ContextProvider";
 const data = [
   {
     name: "Movies",
@@ -27,12 +28,19 @@ function Navbar(props) {
   const pathname = location.pathname.slice(0, 7);
   const [open, setOpen] = useState(true);
 
+  const {setkey} =useStateContext()
+
+  const handlSearch = (e) => {
+    setTimeout(()=>{
+      setkey(e)
+    },1000)
+  }
   const handlClose = () => {
     setOpen(() => !open);
   };
 
   return (
-    <div className={pathname === "/movies" ? "navbarLocation" : "navbar"}>
+    <div className={ pathname === "/movies" ? "navbarLocation" : "navbar"}>
       {/* PC CSS */}
       <NavLink
         to={"/"}
@@ -59,11 +67,12 @@ function Navbar(props) {
       {/* search */}
       <div className=" flex items-center pt-2 ml-16  w-2/12 ">
         <input
+          onChange={(e) => handlSearch(e.target.value)}
           type="text"
           placeholder="Search"
           className=" bg-opacity-10 max-sm:hidden  max-lg:ml-20  pl-3 pb-1 placeholder:text-fontnormal  focus:outline-none text-opacity-60 dark:bg-main-dark-bg h-7 rounded-full w-30  border border-fontnormal"
         />
-        <span>
+        <Link type="submit" className="" to={"discovery"}  >
           <svg
             className="ml-3 max-lg:hidden"
             width="21"
@@ -77,16 +86,16 @@ function Navbar(props) {
               fill="#F9F9F9"
             />
           </svg>
-        </span>
+        </Link>
       </div>
       {/* Sub */}
-      <div className="flex items-center w-2/12 max-lg:absolute max-lg:right-32 max-lg:top-3 max-sm:right-40  max-sm:mr-4">
+      <div className="flex items-center w-1/12 max-lg:absolute max-lg:right-32 max-lg:top-3 max-sm:right-40  max-sm:mr-4 ml-10 ">
         <button className="bg-link rounded-full text-xl  pt-2 pb-2  pl-5 pr-5 ml-16 font-semibold text-fontactive">
           Subscribe
         </button>
       </div>
 
-      <div className="flex items-center ml-24  w-2/12 max-lg:hidden ">
+      <div className="flex items-center ml-28  w-2/12 max-lg:hidden ">
         {/* <span className="mr-16 relative  max-lg:hidden">
           <div className=" flex bg-fontnormal h-2 w-4 absolute top-0 right-0 bottom-auto left-auto z-10 translate-x-2/4 -translate-y-1/2 rotate-0 skew-x-0 skew-y-0 scale-x-100 scale-y-100 rounded-full  p-2.5 text-xs">
             <span className="absolute  top-2/4 right-2/4 bottom-auto left-auto z-20 inline-block translate-x-1/2 -translate-y-1/2 ">

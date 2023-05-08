@@ -24,6 +24,7 @@ function DetailMovies(props) {
        {isLoading && <DetailsLoad></DetailsLoad>} 
         {data && (
           <BannerDetail
+            data = {data}
             bg={data.belongs_to_collection?.backdrop_path || data.backdrop_path}
             brfie={data.overview}
             title={data.original_title}

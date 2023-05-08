@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
-import imblogo from "../../Data/IMDb.png";
 import Actor from "./Actor";
-import {useStateContext} from "../../Contexts/ContextProvider"
-import { LazyLoadImage } from "react-lazy-load-image-component";
-
+import { useStateContext } from "../../Contexts/ContextProvider";
+import { AiFillHeart } from "react-icons/ai";
+import { useState } from "react";
+import { doc, updateDoc, arrayUnion, arrayRemove } from "firebase/firestore";
+import { db } from "../../firebase/firebase-config";
 function BannerDetail(props) {
   const calcTime = (time) => {
     const str = time / 60;
@@ -11,7 +12,25 @@ function BannerDetail(props) {
     const minute = Math.round(60 * (str - Math.floor(str)));
     return `${hour}h ${minute}m`;
   };
-  const {hanldClose} = useStateContext()
+  const dataMovies = props.data
+  const { hanldClose ,currentUser,uid} = useStateContext();
+  console.log(uid);
+  const [btWatchList,setBtWatchList] = useState(false)
+
+  const handlWatchList = async () => {
+    
+    console.log(1);
+    await updateDoc(doc(db, "user",uid),{
+        watchlist:arrayUnion(
+
+          {
+          poster:dataMovies.poster_path,
+          title: dataMovies.title,
+          id: dataMovies.id
+        }
+        )
+    })
+  }
 
   return (
     <div className="relative h-full dark:bg-main-dark-bg">
@@ -29,10 +48,21 @@ function BannerDetail(props) {
             );
           })}
         </div>
-        <button onClick={()=>{hanldClose()}} 
-        className=" bg-link rounded-lg  py-3  text-xl w-36   ">
-          Trailer
-        </button>
+        <div>
+          <button
+            onClick={() => {
+              hanldClose();
+            }}
+            className=" bg-link rounded-lg  py-3  text-xl w-36   "
+          >
+            Trailer
+          </button>
+{/* add watch list */}
+          <button  onClick={() => handlWatchList()}
+           className=" rounded-full hover:border-link transition duration-300 group  h-12 w-12  border-[3px] border-white absolute bottom-[2px] left-[170px]  max-lg:bottom-[66px] max-lg:text-base ">
+            <AiFillHeart className=" group-hover:fill-link transition duration-300 h-10 w-8 inline-block "></AiFillHeart>
+          </button>
+        </div>
       </div>
       <div>
         {/* Cast */}

@@ -1,6 +1,7 @@
 export { default as Sidebar } from "./Sidebar.jsx";
 export { default as Navbar } from "./Navbar.jsx";
 
+export {default as SignIn} from "./Auth/SignIn.jsx"
 // export dash board
 export { default as Banner } from "./Dashboard/Banner.jsx";
 export { default as BannerMoviesPage } from "./Dashboard/BannerMoviesPage.jsx";

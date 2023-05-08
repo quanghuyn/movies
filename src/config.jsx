@@ -28,10 +28,8 @@ export const UrlApi = {
 }
 
 export const getExploreMovie = () => async function (config = {},page) {
-  console.log(config);
   let genres = config.queryKey[2]
   let numpage = config.queryKey[1]
-  console.log(config);
   const data = (
     await axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=dc53e961c475e293222eece8d1187ddb&language=en-US&sort_by=popularity.desc&page=${numpage}`, {
       params: {

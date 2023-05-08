@@ -12,9 +12,9 @@ function MoviesCard(props) {
   return (
     <Link
       to={`/movies/${props.id}`}
-      className=" w-[270px]  flex flex-col rounded-lg dark:bg-movies bg-bg dark:text-fontactive max-sm:h-[560px] h-[460px]  "
+      className=" w-[280px]  flex flex-col rounded-lg dark:bg-movies bg-bg dark:text-fontactive max-sm:h-[560px] h-[460px]  "
     >
-      <div className=" w-[220px] h-[230px] absolute z-10 bg-gradient-to-r  dark:from-cardmovies  to-cardmoviesto  "></div>
+      <div className=" w-[280px] h-[330px] absolute z-10 bg-gradient-to-r  dark:from-cardmovies  to-cardmoviesto  "></div>
       <LazyLoadImage
         src={`${Poster}${props.bg}`}
         alt=""

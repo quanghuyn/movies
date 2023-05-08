@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useFetch } from "../../Hooks/useFetch";
-import { MoviesCardDiscover } from "../../Component";
+import { DetailsLoad, MoviesCardDiscover, Skeleton } from "../../Component";
 import SideBar from "../../Component/DiscoverySideBar/SideBar";
 import { useSearchParams } from "react-router-dom";
 import { apiSearch, fetcher, fetcherConfig, getExploreMovie } from "../../config";
@@ -9,20 +9,20 @@ import scrollTo from "gatsby-plugin-smoothscroll";
 import useSWR from "swr";
 import { useStateContext } from "../../Contexts/ContextProvider";
 function Disover(props) {
+  const load = new Array(6).fill(null)
   const {key} =useStateContext()
   const numPage = new Array(10).fill(null);
   const [config, setConfig] = useState({ with_genres: "" });
   const [searchParams, setSearchParams] = useSearchParams();
   const [page, setPage] = useState(1);
   const apiKey = `https://api.themoviedb.org/3/search/movie?api_key=dc53e961c475e293222eece8d1187ddb&language=en-US&query=${key}&page=${page}&include_adult=false`
-  const { data, error } = useQuery(
+  const { data, error,isLoading } = useQuery(
     ["explore-result-movie", page, config],
     getExploreMovie(config)
   );
 
   const {data:dataSearch} = useSWR(apiKey,fetcher)
   const dataRender = dataSearch?.results == '' ?  data?.results : dataSearch?.results 
-  console.log(dataRender);
   useEffect(() => {
     const changeConfig = (key, value) => {
       setConfig((pre) => ({
@@ -52,6 +52,11 @@ function Disover(props) {
       <div className=" w-7/12  absolute left-1/4 -translate-x-[117px] dark:bg-main-dark-bg  top-16 pl-6 mt-6  ">
         <h3 className="dark:text-fontactive text-2xl pr-4 "></h3>
         <div className=" grid grid-cols-3 gap-5 hover:transition-none">
+          {isLoading &&  load.map(() => {return  <div className="flex flex-col ">
+            <Skeleton className='w-[280px] h-[340px] mb-4 '> 
+            </Skeleton>
+            <Skeleton className='w-[280px] h-[50px]' ></Skeleton>
+          </div> })  }
           {data &&
             dataRender?.map((item, ix) => {
               if (item === undefined) {
@@ -70,7 +75,7 @@ function Disover(props) {
         </div>
         {/* Page */}
         <div className=" text-link absolute -bottom-16 flex flex-row gap-7 justify-center mx-auto  h-8 w-full mb-2 ml-20 ">
-          {numPage.map((i, index) => {
+          { dataRender && numPage.map((i, index) => {
             return (
               <span
                 key={index}
