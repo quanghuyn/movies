@@ -7,7 +7,7 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 function MoviesCardComingSoon(props) {
   return (
     <Link
-      to={`/movies/${props.id}`}
+      to={`/moviesdetail/${props.id}`}
       className="flex movies-commingsoon w-[644px] "
     >
       <div className="relative ">

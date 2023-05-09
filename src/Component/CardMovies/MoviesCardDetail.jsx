@@ -6,7 +6,7 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 function MoviesCardDetail(props) {
   return (
     <Link
-      to={`/movies/${props.id}`}
+      to={`/moviesdetail/${props.id}`}
       className="flex flex-col rounded-lg bg-movies text-fontactive h-[460px]  mt-4   "
     >
       <div className=" w-[320px] h-[300px] absolute z-10 bg-gradient-to-r  from-cardmovies  to-cardmoviesto  "></div>

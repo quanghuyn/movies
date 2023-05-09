@@ -7,7 +7,7 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 function BannerMoviesPage(props) {
   return (
     <Link  
-    to={`/movies/${props.id}`} className=" text-fontactive dark:bg-main-dark-bg h-full z-50   ">
+    to={`${props.to ? '/tvseries/':'/moviesdetail/'}${props.id}`} className=" text-fontactive dark:bg-main-dark-bg h-full z-50   ">
       <div className="  mb-7">
         <div className="relative w-full h-[500px] flex flex-col">
           <div  className="flex mx-auto cursor-pointer  w-full h-full   contrast-125 ">

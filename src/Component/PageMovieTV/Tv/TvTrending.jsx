@@ -35,7 +35,15 @@ function TvTrending(props) {
             })}
         </div>
         <div className="flex flex-row gap-5">
-        {isLoading &&  new Array(5).fill('.').map((i,ix)=> { return  <Skeleton key={ix} className='w-[350px] h-[370px] z-50 ' ></Skeleton>}) }
+          {isLoading &&
+            new Array(5).fill(".").map((i, ix) => {
+              return (
+                <Skeleton
+                  key={ix}
+                  className="w-[350px] h-[370px] z-50 "
+                ></Skeleton>
+              );
+            })}
         </div>
         <Swiper
           grabCursor={"true"}
@@ -50,6 +58,7 @@ function TvTrending(props) {
               return (
                 <SwiperSlide key={i.id}>
                   <MoviesCardHome
+                    to={'tvseries'}
                     title={i.original_name}
                     bg={i.poster_path}
                     id={i.id}

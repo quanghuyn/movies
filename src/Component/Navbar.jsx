@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useParams } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { Outlet } from "react-router-dom";
 import logo from "../Data/logo.png";
@@ -25,7 +25,7 @@ const data = [
 
 function Navbar(props) {
   const location = useLocation();
-  const pathname = location.pathname.slice(0, 7);
+  const pathname = location.pathname.slice(0, 14);
   const [open, setOpen] = useState(true);
 
   const {setkey} =useStateContext()
@@ -40,17 +40,17 @@ function Navbar(props) {
   };
 
   return (
-    <div className={ pathname === "/movies" ? "navbarLocation" : "navbar"}>
+    <nav className={ pathname === `/moviesdetail/` ? "navbarLocation  " : "navbar"}>
       {/* PC CSS */}
       <NavLink
         to={"/"}
-        className=" flex font-bold text-2xl items-center ml-14 w-3/12 z-50 max-lg:hidden "
+        className=" flex font-bold text-2xl items-center ml-14 w-3/12  max-lg:hidden "
       >
         {" "}
         Cinemax{" "}
       </NavLink>
 
-      <div className="flex justify-around  gap-4 max-w-[347px] content-center ml-10 mr-11 w-3/12 max-lg:hidden ">
+      <div className="flex justify-around   gap-4 max-w-[347px] content-center ml-10 mr-11 w-3/12 max-lg:hidden ">
         {data.map((item, index) => {
           return (
             <div key={index} className="flex items-center">
@@ -217,7 +217,7 @@ function Navbar(props) {
       </div>
       <Outlet />
 
-    </div>
+    </nav>
   );
 }
 

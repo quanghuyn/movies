@@ -2,9 +2,13 @@ import React, { useEffect, useState } from "react";
 import { fetcher } from "../../config";
 import useSWR from "swr";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import { useLocation } from "react-router";
 
 function Actor(props) {
-  const apiCast = `https://api.themoviedb.org/3/movie/${props.id}/credits?api_key=dc53e961c475e293222eece8d1187ddb&language=en-US`;
+  const location = useLocation()
+  const pathname = location.pathname.slice(1,9)
+  const type =  pathname === 'tvseries' ? 'tv' : 'movie'
+  const apiCast = `https://api.themoviedb.org/3/${type}/${props.id}/credits?api_key=dc53e961c475e293222eece8d1187ddb&language=en-US`;
   const { data } = useSWR(apiCast, fetcher);
   const [dataCast, setDataCast] = useState();
   useEffect(() => {
@@ -15,7 +19,7 @@ function Actor(props) {
   }, [data]);
   return (
     <>
-      <div className="w-full grid grid-cols-5 gap-6 mb-3">
+      <div className="w-full grid grid-cols-5 gap-6 mb-3 z-10">
         {dataCast &&
           dataCast.map((i) => {
             return (

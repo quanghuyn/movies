@@ -2,7 +2,8 @@ import React, { useRef } from "react";
 import { LeftButton, RightButton } from "../../../Data/Icon";
 import { SwiperSlide, Swiper } from "swiper/react";
 import { useFetchTV } from "../../../Hooks/useFetch";
-import { BannerMoviesPage, DetailsLoad, Skeleton } from "../..";
+import { BannerMoviesPage, Skeleton } from '../../../Component';
+
 import { Autoplay, Pagination, Navigation } from "swiper";
 
 function BannerTv(props) {
@@ -42,6 +43,7 @@ function BannerTv(props) {
               return (
                 <SwiperSlide key={i.id}>
                   <BannerMoviesPage
+                    to={'tvseries'}
                     bg={i.backdrop_path}
                     bgSecond={i.poster_path}
                     title={i.title || i.name}

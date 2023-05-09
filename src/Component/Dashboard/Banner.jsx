@@ -11,7 +11,7 @@ function Banner(props) {
       <div className=" mt-6 mb-7">
         <div className="relative  w-full h-[400px] flex flex-col">
           <Link
-            to={`/movies/${props.id}`}
+            to={`/moviesdetail/${props.id}`}
             className="flex mx-auto  w-full h-full   contrast-125 "
           >
             {/* img desktop */}
@@ -41,7 +41,7 @@ function Banner(props) {
               </span>
             </div>
             <Link
-              to={`/movies/${props.id}`}
+              to={`/moviesdetail/${props.id}`}
               className=" transition hover:scale-110 ease-in-out cursor-pointer absolute bottom-[50px] left-[40px] max-lg:bottom-[60px] z-50 "
             >
               <button className="bg-link rounded-full text-xl  py-3  px-5 font-semibold  max-lg:py-2 max-lg:px-3 z-50 ">

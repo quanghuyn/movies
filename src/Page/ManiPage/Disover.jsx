@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { useFetch } from "../../Hooks/useFetch";
-import { DetailsLoad, MoviesCardDiscover, Skeleton } from "../../Component";
+import {  MoviesCardDiscover, Skeleton } from "../../Component";
 import SideBar from "../../Component/DiscoverySideBar/SideBar";
 import { useSearchParams } from "react-router-dom";
-import { apiSearch, fetcher, fetcherConfig, getExploreMovie } from "../../config";
+import {  fetcher,  getExploreMovie } from "../../config";
 import { useQuery } from "@tanstack/react-query";
 import scrollTo from "gatsby-plugin-smoothscroll";
 import useSWR from "swr";

@@ -42,7 +42,7 @@ body {
     @apply flex items-center h-10 w-full mt-4 pl-7 dark:text-fontnormal font-body cursor-pointer;
   }
   .linkSideBarActive{
-    @apply cursor-pointer  bg-gradient-to-r from-active  flex items-center h-10 w-full mt-4 pl-7 dark:text-fontactive font-semibold  border-r-2 border-active ;
+    @apply cursor-pointer bg-gradient-to-r dark:from-active  from-title flex items-center h-10 w-full mt-4 pl-7 dark:text-fontactive font-semibold  dark:border-r-2 border-active ;
   }
   .link {
     @apply   font-bold flex items-center dark:font-medium relative after:absolute after:-bottom-1 after:left-0 after:bg-link after:h-0.5 after:w-0 hover:after:w-full after:transition-all after:ease-in-out;
@@ -51,14 +51,14 @@ body {
     @apply border-active flex items-center font-medium  border-b-2 border-link   after:absolute relative after:bottom-6 h-8 my-6;
   }
   .linkActiveRs {
-    @apply border-active  items-center font-medium  border-b-2 border-link after:absolute relative after:bottom-6;
+    @apply border-active opacity-10 items-center font-medium  border-b-2 border-link after:absolute relative after:bottom-6;
   }
 
   .navbar {
     @apply dark:bg-main-dark-bg bg-bg flex  flex-row content-center  h-72  dark:text-fontactive fixed w-full top-0 z-40;
   }
   .navbarLocation {
-    @apply dark:bg-main-dark-bg flex flex-row content-center  h-72  dark:text-fontactive  w-full top-0  bg-opacity-40 z-40;
+    @apply   dark:bg-tobg flex flex-row content-center z-40 relative h-72  dark:text-fontactive  w-full top-0   ;
   }
   .gradient {
     background-image: linear-gradient(135deg, #684ca0 35%, #1c4ca0 100%);

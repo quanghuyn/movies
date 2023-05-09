@@ -12,5 +12,5 @@ export { default as RecentPlayed } from "./Personal/RecentPlayed.jsx";
 export { default as Profile } from "./Personal/Profile.jsx";
 
 // details
-export { default as DetailMovies } from "./details/DetailMovies.jsx";
+export { default as DetailMovies } from "./details/Movies/DetailMovies.jsx";
 export { default as PageError } from "./PageError.jsx";

@@ -11,7 +11,7 @@ function MoviesCardDiscover(props) {
   };
   return (
     <Link
-      to={`/movies/${props.id}`}
+      to={`/moviesdetail/${props.id}`}
       className=" ease-in-out hover:duration-300 hover:scale-110 flex flex-col rounded-lg dark:bg-movies bg-bg dark:text-fontactive max-sm:h-[560px] h-[460px]  "
     >
       <div className=" w-[320px] h-[330px] absolute z-10 bg-gradient-to-r  dark:from-cardmovies  to-cardmoviesto  "></div>

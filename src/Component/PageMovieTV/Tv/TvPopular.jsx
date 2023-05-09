@@ -46,6 +46,7 @@ function TvPopular(props) {
                 return (
                   <SwiperSlide key={i.id}>
                     <MoviesCardHome
+                      to={'tvseries'}
                       title={i.original_name}
                       bg={i.poster_path}
                       id={i.id}

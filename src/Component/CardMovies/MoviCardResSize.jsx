@@ -57,7 +57,7 @@ function MoviCardResSize(props) {
       <div className=" cards scrollbar relative" ref={ref}>
 
         {data && dataPop.map(i=>{return(
-            <Link key={i.id} className=" card" to={`/movies/${i.id}`} >
+            <Link key={i.id} className=" card" to={`/moviesdetail/${i.id}`} >
           <LazyLoadImage
             className="poster"
             src={`${Poster}${i.poster_path}`}

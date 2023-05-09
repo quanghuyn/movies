@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { GoogleButton } from "react-google-button";
 import { useStateContext } from "../../Contexts/ContextProvider";
 import { Google } from "../../Data/Icon";
@@ -8,10 +8,10 @@ import { FaFacebookF } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { doc, setDoc } from "firebase/firestore";
 import { db } from "../../firebase/firebase-config";
+import { useNavigate } from "react-router";
 function SignIn() {
   const { ggSignIn, fbSignIn, currenUser, setIsShowSignInBox } =
     useStateContext();
-    console.log(currenUser);
   const handlGoogleSignIn = async () => {
     try {
       await ggSignIn();
@@ -28,6 +28,13 @@ function SignIn() {
       console.log(error);
     }
   };
+
+  const navigate = useNavigate();
+  useEffect(() => {
+  if (currenUser) {
+    return navigate("/");
+  }
+}, [currenUser]);
 
   return (
     <div >

@@ -13,7 +13,7 @@ function MoviesCardHome(props) {
 
   return (
     <Link
-      to={`/movies/${props.id}`}
+      to={`${props.to ? '/tvseries/':'/moviesdetail/'}${props.id}`}
       className=" ease-in-out hover:duration-300 hover:scale-110 flex flex-col rounded-lg dark:bg-movies bg-sc-bglight dark:text-fontactive h-[460px]  mt-4   "
     >
       <div className="   w-[320px] h-[300px] absolute z-10 bg-gradient-to-r  from-cardmovies  to-cardmoviesto  "></div>

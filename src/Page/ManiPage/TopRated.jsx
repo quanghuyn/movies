@@ -15,7 +15,6 @@ function TopRated(props) {
   return (
     <div className="absolute lg:right-0 mt-10 lg:w-5/6 view ">
       <div className="dark:bg-main-dark-bg -ml-1 min-h-screen   ">
-        {/* <h3 className="text-fontactive mt-8 top-10 " >Top Rated</h3> */}
         <div className=" max-sm:grid-cols-1  pt-14 pl-6 grid grid-cols-3 gap-8 pr-8  max-sm:mr-6  ">
           {isLoading ? (
             <Spinner></Spinner>

@@ -15,7 +15,7 @@ module.exports = {
       link: "#b43feb",
       linkvia: "#b43feb40",
       linkto: "#b43feb00",
-      tobg: "#0D0C0F",
+      tobg: "#0D0C0F50",
       viabg: "#0D0C0F50",
       frombg: "#0D0C0F00",
       cardmovies: "#0D0C0F50",

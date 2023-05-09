@@ -9,13 +9,12 @@ import {
 } from "firebase/auth";
 import { auth, db } from "../firebase/firebase-config";
 import { useEffect } from "react";
-import { collection, doc, getDocs, setDoc } from "firebase/firestore";
+import { collection, doc, getDocs, query, setDoc } from "firebase/firestore";
 
 const SetContext = createContext();
 
 export const ContextProvider = ({ children }) => {
   const [currenUser, setCurrenUser] = useState("");
-  const uid =currenUser.uid
   const [key, setkey] = useState("");
   const [openTrailer, setOpenTrailer] = useState(false);
   const [mode, setMode] = useState("dark");
@@ -24,7 +23,6 @@ export const ContextProvider = ({ children }) => {
     setMode(() => {
       return mode === "light" ? "dark" : "light";
     });
-    console.log(11);
   };
   const hanldClose = () => {
     setOpenTrailer(!openTrailer);
@@ -33,62 +31,59 @@ export const ContextProvider = ({ children }) => {
   // firebase
   const signOutfn = () => {
     signOut(auth);
-    window.location.reload(false)
+    // window.location.reload(false)
   };
 
   const ggSignIn = () => {
     const provider = new GoogleAuthProvider();
-    signInWithPopup(auth, provider).then(async (result)=>{
-
+    signInWithPopup(auth, provider).then(async (result) => {
       const user = result.user;
-
-    // Check if user info is already stored in Firestore before
-    let isStored = false;
-    const querySnapshot = await getDocs(collection(db, "users"));
-    querySnapshot.forEach((doc) => {
-      if (doc.id === user.uid) {
-        isStored = true;
-      }
-    });
-
-    if (isStored) return;
-
+      let isStored = false;
+      const querySnapshot = await getDocs(collection(db, "user"));
+      querySnapshot.forEach((doc) => {
+        console.log(doc.id);
+        if (doc.id === user.uid) {
+          isStored = true;
+        }
+      });
+      if (isStored) return;
       setDoc(doc(db, "user", user.uid), {
-        fullname:user.displayName,
+        fullname: user.displayName,
         email: user.email,
         photoURL: user.photoURL,
         recent: [],
         watchlist: [],
       });
-    })
-    const unsubscribe = onAuthStateChanged(auth,  (user) => {
+    });
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
       setCurrenUser(user);
-    })
-    unsubscribe()
+    });
+    unsubscribe();
   };
-console.log(currenUser);
+
   const fbSignIn = () => {
     const provider = new FacebookAuthProvider();
     signInWithPopup(auth, provider);
-    const unsubscribe = onAuthStateChanged(auth,  (user) => {
-      setCurrenUser(user);
-    })
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setCurrenUser(user);
+      }
+    });
   };
 
   useEffect(() => {
-    const unsubscribe  = onAuthStateChanged(auth, (currenUser) => {
+    const unsubscribe = onAuthStateChanged(auth, (currenUser) => {
       setCurrenUser(currenUser);
     });
-    return () => {
-      unsubscribe();
-    };
+    // return () => {
+    //   unsubscribe();
+    // };
     // const unsubscribe = onAuthStateChanged(auth,  (user) => {
     //   setCurrenUser(user);
     // })
     // unsubscribe()
-
   }, []);
-console.log(currenUser);
+
   const value = {
     hanldClose,
     openTrailer,
@@ -102,7 +97,6 @@ console.log(currenUser);
     fbSignIn,
     isShowSign,
     setIsShowSignInBox,
-    uid,
   };
   return <SetContext.Provider value={value}>{children}</SetContext.Provider>;
 };

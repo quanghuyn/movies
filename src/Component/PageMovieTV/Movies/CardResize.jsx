@@ -1,14 +1,9 @@
-import React, { useEffect, useRef, useState } from "react";
-import { fetcher } from "../../../config";
-import useSWR from "swr";
-
+import React, { useRef } from "react";
 import {Poster} from "../../../config"
-
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { Link } from "react-router-dom";
 import { useFetch } from "../../../Hooks/useFetch";
 import { Skeleton } from "../../../Component";
-
 
 function CardResSize(props) {
   const ref = useRef(null);
@@ -56,7 +51,7 @@ function CardResSize(props) {
         {isLoading &&  new Array(5).fill('.').map((i,ix)=> { return  <Skeleton key={ix} className='w-[350px] h-[370px] z-50 ' ></Skeleton>}) }
         </div>
         {dataPop && dataPop.map(i=>{return(
-            <Link key={i.id} className=" card" to={`/movies/${i.id}`} >
+            <Link key={i.id} className=" card" to={`/moviesdetail/${i.id}`} >
           <LazyLoadImage
             className="poster"
             src={`${Poster}${i.poster_path}`}

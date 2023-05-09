@@ -30,6 +30,7 @@ function ContentSideBar(props) {
             return (
               <MoviesCard2
                 key={item.id}
+                id={item.id}
                 bg={item.poster_path}
                 title={item.title}
                 releasedate={item.release_date}

@@ -3,8 +3,8 @@ import img from "../Data/notext.png";
 function PageError(props) {
   return (
     <div>
-      <div className=" text-fontactive  text-white min-h-screen flex font-thin  ">
-        <img className="z-50" src={img} alt="" />
+      <div className=" text-fontactive  text-white min-h-screen flex font-thin z-50 relative ">
+        <img className="z-50 absolute -top-20 " src={img} alt="" />
         <div class="z-50 absolute container top-10 pl-[550px] flex flex-row   ">
           <div className="flex flex-col items-center">
             <div class="text-7xl mb-8 font-medium">Oops</div>

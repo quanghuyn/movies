@@ -1,19 +1,23 @@
-import React, {useRef } from "react";
-import {Poster} from "../../../config"
+import React, { useRef } from "react";
+
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import { Link } from "react-router-dom";
-import { useFetchTV } from "../../../Hooks/useFetch";
+import { Link, useParams } from "react-router-dom";
+import { useFetch } from "../../../Hooks/useFetch";
+import { Skeleton } from "../../../Component";
+import { Poster } from "../../../config";
 
 
-function TvCardResSize(props) {
+
+function CardSimilar(props) {
+    const {moviesId} = useParams()
   const ref = useRef(null);
   function scroll(scrollOffset) {
     ref.current.scrollLeft += scrollOffset;
   }
-  const { dataFetch:dataPop, isLoading, error } = useFetchTV("top_rated",2);
-  console.log(dataPop);
+  const { dataFetch:dataPop, isLoading, error } = useFetch(`${moviesId}/recommendations`,1);
+
   return (
-    <div className="dark:bg-main-dark-bg relative scr mb-16 ml-4">
+    <div className="dark:bg-main-dark-bg relative scr mt-32 mb-10 ">
         <button className="icon_right" onClick={() => scroll(370)}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -47,9 +51,11 @@ function TvCardResSize(props) {
           </svg>
         </button>
       <div className=" cards scrollbar relative" ref={ref}>
-
+      <div className="flex flex-row gap-5">
+        {isLoading &&  new Array(5).fill('.').map((i,ix)=> { return  <Skeleton key={ix} className='w-[350px] h-[370px] z-50 ' ></Skeleton>}) }
+        </div>
         {dataPop && dataPop.map(i=>{return(
-            <Link key={i.id} className=" card" to={`/tvseries/${i.id}`} >
+            <Link key={i.id} className=" card" to={`/moviesdetail/${i.id}`} >
           <LazyLoadImage
             className="poster"
             src={`${Poster}${i.poster_path}`}
@@ -62,8 +68,8 @@ function TvCardResSize(props) {
               alt=""
             />
             <div className="cont">
-              <h3 className="text-xl mb-1" >{i.original_name}</h3>
-              <p className="pl-2">{i.first_air_date}</p>
+              <h3 className="text-xl mb-1" >{i.title}</h3>
+              <p className="pl-2">{i.release_date}</p>
             </div>
           </div>
             </Link>
@@ -72,4 +78,4 @@ function TvCardResSize(props) {
     </div>
   );
 }
-export default TvCardResSize;
+export default CardSimilar;
