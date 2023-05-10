@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
-import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
+import {  Routes, Route } from "react-router-dom";
 import "./App.css";
 import { Navbar } from "./Component";
-import { Home, Main, TopRated, PageError,RecentPlayed,Profile,SignInPage ,WatchList} from "./Page";
+import { Home, Main, TopRated,PageError,SignInPage } from "./Page";
 import { useStateContext } from "./Contexts/ContextProvider";
 import { ToastContainer } from "react-toastify";
 
@@ -10,7 +10,9 @@ import { ToastContainer } from "react-toastify";
 const DetailMovies = React.lazy(() => import("./Page/details/Movies/DetailMovies"));
 const WatchMovies = React.lazy(() => import("./Page/details/Movies/WatchMovies"));
 const DetailMoviesTv = React.lazy(() => import("./Page/details/Tv/DetailMoviesTv"));
-const WatchMoviesTv = React.lazy(() => import("./Page/details/Tv/WatchMoviesTv"));
+const Profile = React.lazy(() => import("./Page/Personal/Profile"));
+const RecentPlayed = React.lazy(() => import("./Page/Personal/RecentPlayed"));
+const WatchList = React.lazy(() => import("./Page/Personal/WatchList"));
 const ComingSoon = React.lazy(() => import("./Page/ManiPage/ComingSoon"));
 const Movies = React.lazy(() => import("./Page/ManiPage/Movies"));
 const TvSeries = React.lazy(() => import("./Page/ManiPage/TvSeries"));
@@ -32,9 +34,6 @@ function App(props) {
         <Route path="/" element={<Main />}>
           <Route path="/" element={<Home />}></Route>
           <Route path="/toprated" element={<TopRated />}></Route>
-          <Route path="/watchlist" element={<WatchList />}></Route>
-          <Route path="/recent" element={<RecentPlayed />}></Route>
-          <Route path="/profile" element={<Profile />}></Route>
           <Route
             path="/comingsoon"
             element={
@@ -48,6 +47,30 @@ function App(props) {
             element={
               <React.Suspense fallback={<>...</>}>
                 <Disover />
+              </React.Suspense>
+            }
+          ></Route>
+          <Route
+            path="/recent"
+            element={
+              <React.Suspense fallback={<>...</>}>
+                <RecentPlayed />
+              </React.Suspense>
+            }
+          ></Route>
+          <Route
+            path="/watchlist"
+            element={
+              <React.Suspense fallback={<>...</>}>
+                <WatchList />
+              </React.Suspense>
+            }
+          ></Route>
+          <Route
+            path="/profile"
+            element={
+              <React.Suspense fallback={<>...</>}>
+                <Profile />
               </React.Suspense>
             }
           ></Route>
@@ -95,7 +118,7 @@ function App(props) {
         <Route path="/sign" element={<SignInPage />}></Route>
 
         <Route path="/error" element={<PageError />}></Route>
-        {/* <Route path="*" element={<PageError />}></Route> */}
+        <Route path="*" element={<PageError />}></Route>
       </Routes>
       <ToastContainer />
     </div>

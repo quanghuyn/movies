@@ -12,7 +12,8 @@ import {
 } from "firebase/firestore";
 import { db } from "../../firebase/firebase-config";
 import { useEffect } from "react";
-import {NavLink, useLocation } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
+import { toast } from "react-toastify";
 function BannerDetail(props) {
   const calcTime = (time) => {
     const str = time / 60;
@@ -26,7 +27,7 @@ function BannerDetail(props) {
   const [btWatchList, setBtWatchList] = useState();
 
   const [btnActive, setBtnActive] = useState(false);
- 
+
   useEffect(() => {
     if (!currenUser) return;
     const unsub = onSnapshot(
@@ -48,21 +49,41 @@ function BannerDetail(props) {
   }, [btnActive]);
 
   const handlWatchList = async () => {
-    setBtnActive((pre) => !pre);
-    await updateDoc(doc(db, "user", currenUser.uid), {
-      watchlist: !btWatchList
-        ? arrayUnion({
+    try {
+      setBtnActive((pre) => !pre);
+      await updateDoc(doc(db, "user", currenUser.uid), {
+        watchlist: !btWatchList
+          ? arrayUnion({
+              poster: dataMovies.poster_path,
+              title: dataMovies.title,
+              id: dataMovies.id,
+            })
+          : arrayRemove({
+              poster: dataMovies.poster_path,
+              title: dataMovies.title,
+              id: dataMovies.id,
+            }),
+      });
+    } catch (error) {
+      toast.error(error);
+    }
+  }
+    
+  const handlRecent = async () => {
+    try {
+       
+        await updateDoc(doc(db,"user",currenUser.uid),{
+          recent: arrayUnion({
             poster: dataMovies.poster_path,
             title: dataMovies.title,
             id: dataMovies.id,
           })
-        : arrayRemove({
-            poster: dataMovies.poster_path,
-            title: dataMovies.title,
-            id: dataMovies.id,
-          }),
-    });
-  };
+        })
+    } catch (error) {
+      toast.error(error);
+    }
+  }
+
 
   return (
     <div className="relative  ">
@@ -86,6 +107,7 @@ function BannerDetail(props) {
         </div>
         <div className="flex flex-row">
           <NavLink
+            onClick={handlRecent}
             to={`/watch/${dataMovies.id}`}
             className=" bg-link rounded-lg hover:opacity-80 py-3  text-xl w-40  flex flex-row items-center "
           >
@@ -95,7 +117,7 @@ function BannerDetail(props) {
               viewBox="0 0 24 24"
               strokeWidth="1.5"
               stroke="currentColor"
-              class="w-6 h-6 fill-light ml-4 mr-2 "
+              className="w-6 h-6 fill-light ml-4 mr-2 "
             >
               <path
                 strokeLinecap="round"
@@ -130,7 +152,6 @@ function BannerDetail(props) {
       </div>
       <div>
         <div className="absolute bottom-16  right-32  text-fontactive z-50">
-          <h3 className="text-2xl mb-4">Actors</h3>
           <Actor id={props.id}></Actor>
         </div>
 

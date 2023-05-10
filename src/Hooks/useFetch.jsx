@@ -15,11 +15,9 @@ export const useFetch = (type,numPage)  => {
 export const useFetchTV = (type,numPage)  => {
   const {getApiTv} = UrlApi
   const {data,isLoading,error} = useSWR(getApiTv(type),fetcher)
-  console.log(error);
   const [dataFetch,setDataFetch] = useState()
   useEffect(()=>{
         data && setDataFetch(()=> data.results)
     },[data])
-
     return {dataFetch,isLoading,error};
 }

@@ -11,7 +11,6 @@ function TvCardResSize(props) {
     ref.current.scrollLeft += scrollOffset;
   }
   const { dataFetch:dataPop, isLoading, error } = useFetchTV("top_rated",2);
-  console.log(dataPop);
   return (
     <div className="dark:bg-main-dark-bg relative scr mb-16 ml-4">
         <button className="icon_right" onClick={() => scroll(370)}>

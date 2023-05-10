@@ -56,7 +56,7 @@ function SignIn() {
       >
         <FaFacebookF className="text-[#19A7CE] mt-1"></FaFacebookF>
         <button className="dark:text-fontactive text-xl">
-          Login with Google
+          Login with FaceBook
         </button>
       </div>
       <span className=" block text-center dark:text-fontnormal mb-8 ">

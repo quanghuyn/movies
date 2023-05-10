@@ -32,13 +32,13 @@ function RecentPlayed() {
     );
   }, [currenUser]);
   return (
-    <div className="absolute lg:right-0 mt-10 lg:w-5/6 view ">
+    <div className="absolute lg:right-0 mt-10 lg:w-5/6 max-lg:right-0  max-lg:left-0 ">
       <div className="dark:bg-main-dark-bg -ml-1 min-h-screen   ">
         <div className=" max-sm:grid-cols-1  pt-14 pl-6 grid grid-cols-3 gap-8 pr-8  max-sm:mr-6  ">
           {loading &&
-            load.map(() => {
+            load.map((i,ix) => {
               return (
-                <div className="flex flex-col ">
+                <div key={ix} className="flex flex-col ">
                   <Skeleton className="w-[370px] h-[340px] mb-4 "></Skeleton>
                   <Skeleton className="w-[370px] h-[50px]"></Skeleton>
                 </div>

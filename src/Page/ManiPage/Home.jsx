@@ -10,9 +10,11 @@ import {useFetch} from "../../Hooks/useFetch"
 // lib slider
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, Navigation } from "swiper";
+import { toast } from "react-toastify";
 function Home(props) {
   // call api from useFetch
   const {dataFetch,isLoading,error} =  useFetch('popular')
+    toast.error(error)
   return (
     // bg-main-dark-bg h-[1000px] w-1600
     <div className=" max-lg:left-0  absolute right-0  max-lg:w-full w-5/6">

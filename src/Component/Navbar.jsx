@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Link, NavLink, useParams } from "react-router-dom";
+import { Link, NavLink, useNavigate, useParams } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { Outlet } from "react-router-dom";
 import logo from "../Data/logo.png";
 import { useStateContext } from "../Contexts/ContextProvider";
+import { doc, onSnapshot } from "firebase/firestore";
+import { db } from "../firebase/firebase-config";
 const data = [
   {
     name: "Movies",
@@ -26,21 +28,33 @@ const data = [
 function Navbar(props) {
   const location = useLocation();
   const pathname = location.pathname.slice(0, 14);
-  const [open, setOpen] = useState(true);
-
-  const {setkey} =useStateContext()
-
+  const { open, setOpen, currenUser } = useStateContext();
+  const name = currenUser?.displayName || "Anonymously";
+  const { setkey } = useStateContext();
+  const [img, setImg] = useState();
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (!currenUser) return;
+    const unsub = onSnapshot(doc(db, "user", currenUser?.uid), (doc) => {
+      setImg(doc.data().photoURL);
+    });
+  }, [currenUser]);
+  const url = currenUser ? img : "https://i.ibb.co/stB42Nb/catface-5.jpg";
+  // const url =  img  ||  currenUser?.photoURL ||   "https://i.ibb.co/stB42Nb/catface-5.jpg"
   const handlSearch = (e) => {
-    setTimeout(()=>{
-      setkey(e)
-    },1000)
-  }
+    setTimeout(() => {
+      document.addEventListener('keydown', function(){navigate("/discovery") } )
+      setkey(e);
+    }, 1000);
+  };
   const handlClose = () => {
     setOpen(() => !open);
   };
 
   return (
-    <nav className={ pathname === `/moviesdetail/` ? "navbarLocation  " : "navbar"}>
+    <nav
+      className={pathname === `/moviesdetail/` ? "navbarLocation  " : "navbar"}
+    >
       {/* PC CSS */}
       <NavLink
         to={"/"}
@@ -72,7 +86,7 @@ function Navbar(props) {
           placeholder="Search"
           className=" bg-opacity-10 max-sm:hidden  max-lg:ml-20  pl-3 pb-1 placeholder:text-fontnormal  focus:outline-none text-opacity-60 dark:bg-main-dark-bg h-7 rounded-full w-30  border border-fontnormal"
         />
-        <Link type="submit" className="" to={"discovery"}  >
+        <Link type="submit" className="" to={"discovery"}>
           <svg
             className="ml-3 max-lg:hidden"
             width="21"
@@ -89,64 +103,21 @@ function Navbar(props) {
         </Link>
       </div>
       {/* Sub */}
-      <div className="flex items-center w-1/12 max-lg:absolute max-lg:right-32 max-lg:top-3 max-sm:right-40  max-sm:mr-4 ml-10 ">
+      <div className="flex items-center w-1/12 max-lg:hidden max-lg:right-32 max-lg:top-3 max-sm:right-40  max-sm:mr-4 ml-10 ">
         <button className="bg-link rounded-full text-xl  pt-2 pb-2  pl-5 pr-5 ml-16 font-semibold text-fontactive">
           Subscribe
         </button>
       </div>
 
       <div className="flex items-center ml-28  w-2/12 max-lg:hidden ">
-        {/* <span className="mr-16 relative  max-lg:hidden">
-          <div className=" flex bg-fontnormal h-2 w-4 absolute top-0 right-0 bottom-auto left-auto z-10 translate-x-2/4 -translate-y-1/2 rotate-0 skew-x-0 skew-y-0 scale-x-100 scale-y-100 rounded-full  p-2.5 text-xs">
-            <span className="absolute  top-2/4 right-2/4 bottom-auto left-auto z-20 inline-block translate-x-1/2 -translate-y-1/2 ">
-              10
-            </span>
-          </div>
-
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M12.0199 20.53C9.68987 20.53 7.35987 20.16 5.14987 19.42C4.30987 19.13 3.66987 18.54 3.38987 17.77C3.09987 17 3.19987 16.15 3.65987 15.39L4.80987 13.48C5.04987 13.08 5.26987 12.28 5.26987 11.81V8.92004C5.26987 5.20004 8.29987 2.17004 12.0199 2.17004C15.7399 2.17004 18.7699 5.20004 18.7699 8.92004V11.81C18.7699 12.27 18.9899 13.08 19.2299 13.49L20.3699 15.39C20.7999 16.11 20.8799 16.98 20.5899 17.77C20.2999 18.56 19.6699 19.16 18.8799 19.42C16.6799 20.16 14.3499 20.53 12.0199 20.53ZM12.0199 3.67004C9.12987 3.67004 6.76987 6.02004 6.76987 8.92004V11.81C6.76987 12.54 6.46987 13.62 6.09987 14.25L4.94987 16.16C4.72987 16.53 4.66987 16.92 4.79987 17.25C4.91987 17.59 5.21987 17.85 5.62987 17.99C9.80987 19.39 14.2399 19.39 18.4199 17.99C18.7799 17.87 19.0599 17.6 19.1899 17.24C19.3199 16.88 19.2899 16.49 19.0899 16.16L17.9399 14.25C17.5599 13.6 17.2699 12.53 17.2699 11.8V8.92004C17.2699 6.02004 14.9199 3.67004 12.0199 3.67004Z"
-              fill="#F9F9F9"
-            />
-            <path
-              d="M13.8801 3.94005C13.8101 3.94005 13.7401 3.93005 13.6701 3.91005C13.3801 3.83005 13.1001 3.77005 12.8301 3.73005C11.9801 3.62005 11.1601 3.68005 10.3901 3.91005C10.1101 4.00005 9.81011 3.91005 9.62011 3.70005C9.43011 3.49005 9.37011 3.19005 9.48011 2.92005C9.89011 1.87005 10.8901 1.18005 12.0301 1.18005C13.1701 1.18005 14.1701 1.86005 14.5801 2.92005C14.6801 3.19005 14.6301 3.49005 14.4401 3.70005C14.2901 3.86005 14.0801 3.94005 13.8801 3.94005Z"
-              fill="#F9F9F9"
-            />
-            <path
-              d="M12.02 22.8101C11.03 22.8101 10.07 22.4101 9.37002 21.7101C8.67002 21.0101 8.27002 20.0501 8.27002 19.0601H9.77002C9.77002 19.6501 10.01 20.2301 10.43 20.6501C10.85 21.0701 11.43 21.3101 12.02 21.3101C13.26 21.3101 14.27 20.3001 14.27 19.0601H15.77C15.77 21.1301 14.09 22.8101 12.02 22.8101Z"
-              fill="#F9F9F9"
-            />
-          </svg>
-        </span> */}
-
-        <img
-          src="https://tecdn.b-cdn.net/img/new/avatars/2.webp"
-          className="w-10  rounded-full"
-          alt="Avatar"
-        />
-        <span>
-          <svg
-            width="14"
-            height="8"
-            viewBox="0 0 14 8"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M0.724562 0.641432C0.946451 0.419543 1.29367 0.399372 1.53835 0.580917L1.60845 0.641432L6.99984 6.03254L12.3912 0.641432C12.6131 0.419543 12.9603 0.399372 13.205 0.580917L13.2751 0.641432C13.497 0.863321 13.5172 1.21054 13.3356 1.45522L13.2751 1.52532L7.44178 7.35865C7.21989 7.58054 6.87267 7.60071 6.628 7.41916L6.5579 7.35865L0.724562 1.52532C0.480484 1.28124 0.480484 0.88551 0.724562 0.641432Z"
-              fill="#F9F9F9"
-            />
-          </svg>
-        </span>
+        <NavLink to={"/profile"} className="flex flex-row items-center">
+          <img src={`${url}`} className="w-10 h-10 rounded-full" alt="Avatar" />
+          <p className=" pl-3">{name}</p>
+        </NavLink>
       </div>
 
       {/* Mobi & Tab css */}
+      {/* logo */}
       <Link to={"/"}>
         <img
           className="absolute w-32 left-0 -top-3 lg:hidden "
@@ -155,7 +126,7 @@ function Navbar(props) {
         />
       </Link>
       {/* menu icon */}
-      <div className="absolute right-0 top-3 lg:hidden">
+      <div className={`absolute right-0 top-3 lg:hidden ${open ? 'hidden' : null}`}>
         <svg
           onClick={(e) => handlClose(e)}
           className="w-10 h-10 mr-4 "
@@ -172,51 +143,25 @@ function Navbar(props) {
           />
         </svg>
       </div>
-
-      <div
-        className={` w-full absolute z-30 lg:hidden bg-main-dark-bg ${
-          open ? "hidden" : null
-        } `}
-      >
-        <div onClick={() => handlClose()} className="cursor-pointer">
-          <svg
-            id="closesvg"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth="1.5"
-            stroke="currentColor"
-            className="absolute  w-6 h-6 right-0 mr-6 mt-3   "
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M6 18L18 6M6 6l12 12"
-            />
-          </svg>
-        </div>
-
-        <div className="w-full h-full   ">
-          <div className="flex flex-col gap-6  content-center pt-8 pb-6 ">
-            {data.map((item, index) => {
-              return (
-                <div key={item.name} className="flex flex-col items-center">
-                  <NavLink
-                    className={({ isActive }) =>
-                      isActive ? "linkActiveRs" : "link"
-                    }
-                    to={`/${item.to}`}
-                  >
-                    {item.name}
-                  </NavLink>
-                </div>
-              );
-            })}
-          </div>
-        </div>
+      <div className={`absolute right-0 top-3 lg:hidden ${open ? null : 'hidden'}`}>
+        <svg
+        onClick={(e) => handlClose(e)}
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth="1.5"
+          stroke="currentColor"
+          className="w-16 h-11"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M6 18L18 6M6 6l12 12"
+          />
+        </svg>
       </div>
-      <Outlet />
 
+      <Outlet />
     </nav>
   );
 }

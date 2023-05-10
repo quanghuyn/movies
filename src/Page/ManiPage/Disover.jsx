@@ -47,11 +47,11 @@ function Disover(props) {
   }
 
   return (
-    <div className=" dark:bg-main-dark-bg flex flex-row  w-full h-[3500px]">
-      <div className=" w-7/12  absolute left-1/4 -translate-x-[117px] dark:bg-main-dark-bg  top-16 pl-6 mt-6  ">
+    <div className=" dark:bg-main-dark-bg flex flex-row  w-full max-lg:h-[5700px] h-[3500px]">
+      <div className=" w-7/12 max-lg:w-full max-lg:top-[800px]  absolute left-1/4 -translate-x-[117px] max-xl:-translate-x-[90px] dark:bg-main-dark-bg  top-16 pl-6 mt-6 max-lg:left-20 ">
         <h3 className="dark:text-fontactive text-2xl pr-4 "></h3>
-        <div className=" grid grid-cols-3 gap-5 hover:transition-none">
-          {isLoading &&  load.map(() => {return  <div className="flex flex-col ">
+        <div className=" grid max-xl:grid-cols-2  grid-cols-3  gap-5 hover:transition-none">
+          {isLoading &&  load.map((i,ix) => {return  <div key={ix} className="flex flex-col ">
             <Skeleton className='w-[280px] h-[340px] mb-4 '> 
             </Skeleton>
             <Skeleton className='w-[280px] h-[50px]' ></Skeleton>

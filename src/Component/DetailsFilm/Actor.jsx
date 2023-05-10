@@ -18,8 +18,10 @@ function Actor(props) {
       });
   }, [data]);
   return (
-    <>
-      <div className="w-full grid grid-cols-5 gap-6 mb-3 z-10">
+    <div className="max-lg:hidden ">
+      <h3 className="text-2xl mb-4">Actors</h3>
+      <div className="w-full grid grid-cols-5 gap-6 mb-3 z-10  ">
+
         {dataCast &&
           dataCast.map((i) => {
             return (
@@ -36,7 +38,7 @@ function Actor(props) {
             );
           })}
       </div>
-    </>
+    </div>
   );
 }
 

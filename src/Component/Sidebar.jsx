@@ -8,8 +8,7 @@ import {RxCountdownTimer} from "react-icons/rx"
 // import { Toggle} from "../Data/Toggle";
 function Sidebar(props) {
   const navigate = useNavigate();
-  const { signOutfn, currenUser } = useStateContext();
-
+  const { signOutfn, currenUser,open, setOpen, } = useStateContext();
   const personalPageHandler = (destinationUrl) => {
     if (!currenUser) {
       toast.info("You need to login to use this feature", {
@@ -28,7 +27,7 @@ function Sidebar(props) {
     navigate(destinationUrl);
   };
   return (
-    <div className=" max-lg:hidden  flex flex-col  h-full dark:bg-secondary-dark-bg bg-bg  -ml-1 w-1/6  fixed mt-2 top-16  ">
+    <div className={` ${open ? null : 'hidden'}  flex flex-col  h-full dark:bg-secondary-dark-bg bg-bg  -ml-1 w-1/6  fixed mt-2 top-16  max-lg:w-2/6 z-30 `}>
       <div className="pt-12 pl-8 w-full">
         <span className="dark:text-title font-bold font-[Inter]  bg-primary ">
           MENU

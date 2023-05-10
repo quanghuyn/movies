@@ -4,7 +4,6 @@ import {Poster} from "../../config"
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
 function MoviesCardSideBar(props) {
-  console.log(props.id);
   return (
     <Link to={`moviesdetail/${props.id}`} className=" flex w-full my-1 rounded-md ">
       <div className="rounded-lg w-[370px] h-[170px]  px-3  flex flex-row ">

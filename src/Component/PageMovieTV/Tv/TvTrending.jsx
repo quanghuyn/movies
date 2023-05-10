@@ -26,14 +26,7 @@ function TvTrending(props) {
             <LeftButton className="w-6 h-6" />
           </button>
         </div>
-        <div className="flex flex-row gap-5">
-          {isLoading &&
-            new Array(5).fill(".").map((i) => {
-              return (
-                <Skeleton className="w-[350px] h-[370px] z-50 "></Skeleton>
-              );
-            })}
-        </div>
+
         <div className="flex flex-row gap-5">
           {isLoading &&
             new Array(5).fill(".").map((i, ix) => {
@@ -54,7 +47,7 @@ function TvTrending(props) {
           }}
         >
           {dataFetch &&
-            dataFetch.map((i) => {
+            dataFetch.map((i,ix) => {
               return (
                 <SwiperSlide key={i.id}>
                   <MoviesCardHome

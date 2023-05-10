@@ -6,7 +6,6 @@ import { MoviesCardHome, Skeleton } from "../../../Component";
 
 function TvPopular(props) {
   const { dataFetch:dataTopRated, isLoading, error } = useFetchTV("top_rated",2);
-  console.log(error,isLoading);
   const swiperRef = useRef();
 
   return (

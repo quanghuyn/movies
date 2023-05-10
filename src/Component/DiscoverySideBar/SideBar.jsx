@@ -5,7 +5,7 @@ import FilterRunTime from "./FilterRunTime";
 import FilterDate from "./FilterDate";
 function SideBar(props) {
   return (
-    <div className=" dark:bg-textlight w-[320px]   right-0 pl-6 pt-6 top-20 fixed rounded-lg ">
+    <div className=" dark:bg-textlight w-[320px] max-lg:absolute  max-lg:w-full right-0 pl-6 pt-6 top-20 fixed rounded-lg ">
       <h3 className="dark:text-fontactive text-xl pr-4 ">Find Your Movies</h3>
       <SearchMovies></SearchMovies>
       <p className="dark:text-fontactive text-xl pt-6 mb-4">Genres</p>
