@@ -12,7 +12,6 @@ const Disover = React.lazy(() => import("./Page/ManiPage/Disover"));
 import { Home, Main, TopRated,PageError,SignInPage } from "./Page";
 import {  Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from 'framer-motion';
-// import {} from "framer-motion"
 function AnmateRoute(props) {
   const location = useLocation()
 

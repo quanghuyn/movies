@@ -1,12 +1,9 @@
 import React, { useEffect } from "react";
-import {  Routes, Route, useLocation } from "react-router-dom";
 import "./App.css";
 import { Navbar } from "./Component";
 import { useStateContext } from "./Contexts/ContextProvider";
 import { ToastContainer } from "react-toastify";
 import AnmateRoute from "./AnmateRoute";
-
-// const TopRated = React.lazy(() => import("./Page/ManiPage/TopRated"));
 
 
 function App(props) {
@@ -27,5 +24,3 @@ function App(props) {
 }
 
 export default App;
-// 17.85962473940236
-// 25.15635858234885
