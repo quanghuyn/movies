@@ -1,12 +1,17 @@
 import React from "react";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
+import { motion } from 'framer-motion';
 
 //component
 import {BannerMovies,MoviesPopular,CardResSize,MoviesTrending} from "../../Component/"
 function Movies(props) {
   const [parent] = useAutoAnimate();
   return (
-    <div   ref={parent} className="dark:bg-main-dark-bg w-full min-h-screen h-full">
+    <motion.div
+      initial={{width:0,opacity:0 }}
+      animate ={{width:"100%", opacity:1 }}
+      exit={{x:window.innerWidth, transition:{duration:0.2},backgroundColor:"black",opacity:0 }}
+     ref={parent} className="dark:bg-main-dark-bg w-full min-h-screen h-full">
     <div className="mt-10">
       <BannerMovies></BannerMovies>
 
@@ -28,7 +33,7 @@ function Movies(props) {
       <div className="pb-16">
         <MoviesPopular></MoviesPopular>
       </div>
-    </div>
+    </motion.div>
   );
 }
 

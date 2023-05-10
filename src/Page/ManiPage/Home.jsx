@@ -6,24 +6,36 @@ import {
   CountinueWatch,
   Skeleton,
 } from "../../Component";
-import {useFetch} from "../../Hooks/useFetch"
+import { useFetch } from "../../Hooks/useFetch";
 // lib slider
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, Navigation } from "swiper";
 import { toast } from "react-toastify";
+import { motion } from "framer-motion";
+
 function Home(props) {
   // call api from useFetch
-  const {dataFetch,isLoading,error} =  useFetch('popular')
-    toast.error(error)
+  const { dataFetch, isLoading, error } = useFetch("popular");
+  toast.error(error);
   return (
     // bg-main-dark-bg h-[1000px] w-1600
-    <div className=" max-lg:left-0  absolute right-0  max-lg:w-full w-5/6">
+    <motion.div
+      initial={{opacity: 0 }}
+      animate={{opacity: 1 }}
+      exit={{
+        // transition: { duration: 0.1 },
+        opacity: 0.1,
+      }}
+      className=" max-lg:left-0  absolute right-0  max-lg:w-full w-5/6  "
+    >
       <div className="   flex bg-light-bg dark:bg-main-dark-bg   -ml-1 lg:pl-6  pb-20  max-sm:h-full lg:h-[1180px]">
         <div className=" flex flex-row w-full">
           <div className="   max-lg:w-full lg:w-2/3 ">
             <div className="flex flex-col  h-[990px] ">
               <div className=" max-lg:w-full  min-h-h-[400px] lg:basis-3/6">
-                {isLoading && <Skeleton className="absolute top-20  w-4/6 h-[400px] z-50 " ></Skeleton>}
+                {isLoading && (
+                  <Skeleton className="absolute top-20  w-4/6 h-[400px] z-50 "></Skeleton>
+                )}
                 <Swiper
                   spaceBetween={30}
                   centeredSlides={true}
@@ -56,13 +68,13 @@ function Home(props) {
               </div>
             </div>
           </div>
-            
+
           <div className=" bg-light pl-3 w-1/3 dark:border-active dark:text-fontactive max-lg:hidden dark:bg-main-dark-bg">
             <ContentSideBar>content</ContentSideBar>
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 

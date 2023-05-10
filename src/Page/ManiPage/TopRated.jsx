@@ -1,19 +1,28 @@
 import React, { useEffect, useState } from "react";
 import { Spinner, MoviesCard } from "../../Component";
 import scrollTo from "gatsby-plugin-smoothscroll";
-import {useFetch} from "../../Hooks/useFetch"
+import { useFetch } from "../../Hooks/useFetch";
+import { motion } from "framer-motion";
 
 function TopRated(props) {
   const Page = new Array(10).fill(null);
   const [page, setPage] = useState(1);
-  const {dataFetch,isLoading,error} = useFetch('top_rated',page)
+  const { dataFetch, isLoading, error } = useFetch("top_rated", page);
   error ? (window.location = "/error") : null;
   const handlPage = (e) => {
     setPage(e.target.textContent);
   };
 
   return (
-    <div className="absolute lg:right-0 mt-10 lg:w-5/6 view ">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{
+        // transition: { duration: 0.1 },
+        opacity: 0.1,
+      }}
+      className="absolute lg:right-0 mt-10 lg:w-5/6 view "
+    >
       <div className="dark:bg-main-dark-bg -ml-1 min-h-screen   ">
         <div className=" max-sm:grid-cols-1  pt-14 pl-6 grid grid-cols-3 gap-8 pr-8  max-sm:mr-6  ">
           {isLoading ? (
@@ -51,7 +60,7 @@ function TopRated(props) {
           })}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 

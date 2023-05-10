@@ -15,7 +15,7 @@ import EmailVerification from "../../Component/Presonal/EmailVerification";
 import Password from "../../Component/Presonal/Password";
 import { auth } from "../../firebase/firebase-config";
 import Drop from "./Drop";
-import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import DeleteAccount from "../../Component/Presonal/DeleteAcount";
 
 function Profile() {
@@ -141,7 +141,13 @@ function Profile() {
     });
   };
   return (
-    <div className="absolute lg:right-0 mt-10 lg:w-5/6 view ">
+    <motion.div
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    exit={{
+      // transition: { duration: 0.1 },
+      opacity: 0.1,
+    }} className="absolute lg:right-0 mt-10 lg:w-5/6 view ">
 
       {isShowPromptReAuthFor && (
         <>
@@ -226,7 +232,7 @@ function Profile() {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 

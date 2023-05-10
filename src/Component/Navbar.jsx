@@ -6,6 +6,7 @@ import logo from "../Data/logo.png";
 import { useStateContext } from "../Contexts/ContextProvider";
 import { doc, onSnapshot } from "firebase/firestore";
 import { db } from "../firebase/firebase-config";
+import { toast } from "react-toastify";
 const data = [
   {
     name: "Movies",
@@ -50,11 +51,30 @@ function Navbar(props) {
   const handlClose = () => {
     setOpen(() => !open);
   };
+  const personalPageHandler = (destinationUrl) => {
+    if (!currenUser) {
+      toast.info("You need to login to use this feature", {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
 
+      return;
+    }
+
+    navigate(destinationUrl);
+  };
   return (
+    <div>
+    <div className="dark:bg-main-dark-bg w-full h-screen absolute top-0 -z-50 "></div>
     <nav
       className={pathname === `/moviesdetail/` ? "navbarLocation  " : "navbar"}
     >
+
       {/* PC CSS */}
       <NavLink
         to={"/"}
@@ -110,10 +130,10 @@ function Navbar(props) {
       </div>
 
       <div className="flex items-center ml-28  w-2/12 max-lg:hidden ">
-        <NavLink to={"/profile"} className="flex flex-row items-center">
+        <button onClick={()=>personalPageHandler("/profile")}  className="flex flex-row items-center">
           <img src={`${url}`} className="w-10 h-10 rounded-full" alt="Avatar" />
           <p className=" pl-3">{name}</p>
-        </NavLink>
+        </button>
       </div>
 
       {/* Mobi & Tab css */}
@@ -160,9 +180,9 @@ function Navbar(props) {
           />
         </svg>
       </div>
-
       <Outlet />
     </nav>
+    </div>
   );
 }
 

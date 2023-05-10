@@ -1,25 +1,34 @@
 import React, { useEffect, useRef, useState } from "react";
-import {useFetch} from "../../Hooks/useFetch"
+import { useFetch } from "../../Hooks/useFetch";
 import {
   MoviesCardComingSoon,
   MoviesCardHome,
   DetailsLoad,
   MoviesCardSideBar,
-  Spinner
+  Spinner,
 } from "../../Component";
-import {LeftButton,RightButton} from "../../Data/Icon"
+import { LeftButton, RightButton } from "../../Data/Icon";
 //libary
 import { Swiper, SwiperSlide } from "swiper/react";
+import { motion } from "framer-motion";
 
 function Trending(props) {
-  const {dataFetch,isLoading,error} = useFetch('upcoming')
-  const {dataFetch:dataOnYear} = useFetch('upcoming',2)
+  const { dataFetch, isLoading, error } = useFetch("upcoming");
+  const { dataFetch: dataOnYear } = useFetch("upcoming", 2);
   const swiperRef = useRef();
   const swiperSecondRef = useRef();
   error ? (window.location = "/error") : null;
 
   return (
-    <div className=" max-lg:left-0  absolute right-0 h-fit max-lg:w-full w-5/6  select-none">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{
+        // transition: { duration: 0.1 },
+        opacity: 0.1,
+      }}
+      className=" max-lg:left-0  absolute right-0 h-fit max-lg:w-full w-5/6  select-none"
+    >
       <div className="dark:bg-main-dark-bg   lg:-ml-1 lg:pl-6  pb-10 ">
         {isLoading ? <DetailsLoad></DetailsLoad> : null}
         <h2 className="dark:text-fontactive text-2xl font-medium mt-16 pt-4 mb-8 z">
@@ -31,7 +40,7 @@ function Trending(props) {
               className="  rounded-full w-10 h-10 bg-fontnormal  bg-opacity-25  hover:bg-fontnormal transition-colors "
               onClick={() => swiperRef.current?.slidePrev()}
             >
-              <LeftButton  className=" cursor-pointer w-8 h-8 mx-auto -translate-x-1 " />
+              <LeftButton className=" cursor-pointer w-8 h-8 mx-auto -translate-x-1 " />
             </button>
 
             <button
@@ -78,18 +87,14 @@ function Trending(props) {
               className="  rounded-full w-10 h-10 bg-fontnormal  bg-opacity-25  hover:bg-fontnormal transition-colors "
               onClick={() => swiperSecondRef.current?.slidePrev()}
             >
-                
-                 <LeftButton  className=" cursor-pointer w-8 h-8 mx-auto -translate-x-1 "/>
-
+              <LeftButton className=" cursor-pointer w-8 h-8 mx-auto -translate-x-1 " />
             </button>
 
             <button
               className="  rounded-full w-10 h-10 bg-fontnormal bg-opacity-70  hover:bg-fontnormal transition-colors"
               onClick={() => swiperSecondRef.current?.slideNext()}
             >
-                
-                <RightButton className=" cursor-pointer text-fontactive w-8 h-8 mx-auto translate-x-1"/>
-              
+              <RightButton className=" cursor-pointer text-fontactive w-8 h-8 mx-auto translate-x-1" />
             </button>
           </div>
           <Swiper
@@ -120,7 +125,7 @@ function Trending(props) {
           </Swiper>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
