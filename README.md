@@ -32,7 +32,9 @@ The Movie Database API
 
 ![2](https://i.ibb.co/frJ1h2L/discovery.png)
 
-![3](https://i.ibb.co/nRwSm9s/moviespage.png)
+![2](https://i.ibb.co/tBnBx6z/baner.png)
+
+![3](https://i.ibb.co/Ln733Sf/movies.png)
 
 ![4](https://i.ibb.co/WzTbyXG/coming.png)
 

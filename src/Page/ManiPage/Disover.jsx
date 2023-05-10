@@ -53,7 +53,6 @@ function Disover(props) {
     initial={{opacity: 0.1 }}
     animate={{opacity: 1 }}
     exit={{
-      // transition: { duration: 0.4 },
       opacity: 0.1,
     }}
      className=" dark:bg-main-dark-bg flex flex-row  w-full max-lg:h-[5700px] h-[3500px]">

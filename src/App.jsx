@@ -4,7 +4,7 @@ import { Navbar } from "./Component";
 import { useStateContext } from "./Contexts/ContextProvider";
 import { ToastContainer } from "react-toastify";
 import AnmateRoute from "./AnmateRoute";
-
+// import {Scrolltotop} from "./Hooks/ScrolltoTop"
 
 function App(props) {
   const { mode, currenUser } = useStateContext();

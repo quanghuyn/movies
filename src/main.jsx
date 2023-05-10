@@ -4,6 +4,7 @@ import App from "./App";
 import "./index.css";
 import { ContextProvider } from "./Contexts/ContextProvider";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { Scrolltotop } from "./Hooks/ScrolltoTop";
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -18,6 +19,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <QueryClientProvider client={queryClient}>
       <ContextProvider>
         <BrowserRouter>
+          <Scrolltotop />
           <App />
         </BrowserRouter>
       </ContextProvider>
