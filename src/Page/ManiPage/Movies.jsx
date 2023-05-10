@@ -1,10 +1,16 @@
 import React from "react";
+import { useAutoAnimate } from "@formkit/auto-animate/react";
+
 //component
 import {BannerMovies,MoviesPopular,CardResSize,MoviesTrending} from "../../Component/"
 function Movies(props) {
+  const [parent] = useAutoAnimate();
   return (
-    <div className="dark:bg-main-dark-bg w-full min-h-screen h-full">
+    <div   ref={parent} className="dark:bg-main-dark-bg w-full min-h-screen h-full">
+    <div className="mt-10">
       <BannerMovies></BannerMovies>
+
+    </div>
       <div className="relative mb-16 mt-12 ">
         <CardResSize></CardResSize>
       </div>

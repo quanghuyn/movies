@@ -1,10 +1,13 @@
 import React from "react";
+import { useAutoAnimate } from "@formkit/auto-animate/react";
 
 import {BannerTv,TvTrending,TvPopular,TvCardResSize} from "../../Component/"
 
 function TvSeries(props) {
+  const [show] = useAutoAnimate();
+
   return (
-    <div className="dark:bg-main-dark-bg w-full min-h-screen h-full">
+    <div ref={show}  className="dark:bg-main-dark-bg w-full min-h-screen h-full">
       <BannerTv></BannerTv>
       <TvCardResSize></TvCardResSize>
       <h3 className="dark:text-fontactive text-2xl mb-6 ml-9 uppercase ">
