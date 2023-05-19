@@ -2,19 +2,19 @@ import React from "react";
 import { BsFillPlayFill, BsHeart } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { Poster, Backdrop } from "../../config";
-
-import { LazyLoadImage } from "react-lazy-load-image-component";
+import Skeleton from "../Load/Skeleton"
 
 function Banner(props) {
   return (
     <div className=" text-fontactive dark:bg-main-dark-bg h-full pt-16 ">
+       {props.src && <Skeleton className='absolute top-20  w-[790px] h-[400px]'></Skeleton> }  
       <div className=" mt-6 mb-7">
         <div className="relative  w-full h-[400px] flex flex-col">
           <Link
             to={`/moviesdetail/${props.id}`}
             className="flex mx-auto  w-full h-full   contrast-125 "
           >
-            {/* img desktop */}
+          
             <div className="  absolute  bg-gradient-to-r h-full w-1/3 dark:from-tobg via-viabg to-frombg  "></div>
             <img
               className=" max-lg:hidden  w-full object-cover h-full   bg-gradient-to-r from-fontnormal dark:to-title "
@@ -27,7 +27,7 @@ function Banner(props) {
               src={`${Poster}${props.bgSecond}`}
               alt=""
             />
-            {/* img mobi&tab  */}
+            
           </Link>
           <div className=" flex flex-col max-sm:hidden  ">
             <div className=" absolute bottom-[137px]  left-[40px] ">
