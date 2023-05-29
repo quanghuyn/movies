@@ -4,7 +4,7 @@ Watch Movies and chill
 
 ## Live Demo
 
-Website: [https://movieproject-eight.vercel.app/]
+Website: [https://movieproject-eight.vercel.app]
 
 ## Movie sources
 
