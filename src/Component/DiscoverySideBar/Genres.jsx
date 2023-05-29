@@ -10,6 +10,7 @@ function Genres(props) {
   );
   const [searchParam, setSearchParam] = useSearchParams();
   const chooseGenre = (genreId) => {
+    window.scrollTo(0, 0)
     const existingGenres = searchParam.getAll("genre")
    if (existingGenres.includes(`${genreId}`)) {
       const updatedGenres = existingGenres.filter((genre) => genre != genreId);
