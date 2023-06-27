@@ -1,15 +1,10 @@
 import {  useState } from "react";
 import { AiOutlineDelete } from "react-icons/ai";
 import Drop from "../../Page/Personal/Drop";
-
-
-
-
 const DeleteAccount = ({
   setIsShowPromptReAuthFor,
 }) => {
   const [isShowPrompt, setIsShowPrompt] = useState(false);
-
   return (
     <>
       {isShowPrompt && (

@@ -34,7 +34,6 @@ export const ContextProvider = ({ children }) => {
   // firebase
   const signOutfn = () => {
     signOut(auth);
-    // window.location.reload(false)
   };
 
   const ggSignIn = () => {
@@ -44,7 +43,6 @@ export const ContextProvider = ({ children }) => {
       let isStored = false;
       const querySnapshot = await getDocs(collection(db, "user"));
       querySnapshot.forEach((doc) => {
-        console.log(doc.id);
         if (doc.id === user.uid) {
           isStored = true;
         }

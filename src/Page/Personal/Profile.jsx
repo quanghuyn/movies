@@ -21,24 +21,17 @@ import DeleteAccount from "../../Component/Presonal/DeleteAcount";
 function Profile() {
   const { currenUser: currentUser } = useStateContext();
   const firebaseUser = auth.currentUser;
-
-  const [isSidebarActive, setIsSidebarActive] = useState(false);
-
   const [isUpdatingEmail, setIsUpdatingEmail] = useState(false);
   const emailValueRef = useRef(null);
-
   const [isUpdatedPassword, setIsUpdatedPassword] = useState(false);
   const oldPasswordValueRef = useRef(null);
   const newPasswordValueRef = useRef(null);
-
   const [isUpdating, setIsUpdating] = useState(false);
   const [isShowPromptReAuthFor, setIsShowPromptReAuthFor] = useState();
-
   const reAuthentication = async () => {
     const oldPassword = oldPasswordValueRef.current.value;
 
     if (!oldPassword.trim().length) {
-      // alert("You gotta type something");
       toast.error("You gotta type something", {
         position: "top-right",
         autoClose: 2000,

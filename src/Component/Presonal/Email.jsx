@@ -1,4 +1,4 @@
-import { FunctionComponent } from "react";
+
 import { AiOutlineEdit } from "react-icons/ai";
 import { BiSend } from "react-icons/bi";
 import { ToastContainer, toast } from "react-toastify";

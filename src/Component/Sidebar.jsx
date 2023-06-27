@@ -5,10 +5,26 @@ import ButtonSetMode from "./Dashboard/ButtonSetMode";
 import { data } from "../Data/Icon";
 import { ToastContainer, toast } from "react-toastify";
 import {RxCountdownTimer} from "react-icons/rx"
+import { useEffect } from "react";
 // import { Toggle} from "../Data/Toggle";
 function Sidebar(props) {
   const navigate = useNavigate();
   const { signOutfn, currenUser,open, setOpen, } = useStateContext();
+  const updateTarget = () => {
+    setOpen(true)
+  }
+  useEffect(() =>
+  {
+    const media = window.matchMedia(`(max-width: 1025px)`)
+    media.addEventListener('change', updateTarget)
+
+    // Check on mount (callback is not called until a change occurs)
+    if (media.matches) setOpen(true)
+
+    return () => media.removeEventListener('change', updateTarget)
+  }, [])
+
+
   const personalPageHandler = (destinationUrl) => {
     if (!currenUser) {
       toast.info("You need to login to use this feature", {
@@ -23,7 +39,6 @@ function Sidebar(props) {
 
       return;
     }
-
     navigate(destinationUrl);
   };
   return (

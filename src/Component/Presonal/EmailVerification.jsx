@@ -1,5 +1,5 @@
 import { sendEmailVerification } from "firebase/auth";
-import { FunctionComponent, useState } from "react";
+import {  useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { auth } from "../../firebase/firebase-config";
 import { useStateContext } from "../../Contexts/ContextProvider";
